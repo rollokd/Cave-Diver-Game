@@ -6,25 +6,25 @@ public class PlayerMovement : MonoBehaviour
 {
     public float movementSpeed;
     public float jumpSpeed;
-    public Rigidbody2D rigidbody;
+    public Rigidbody2D rb;
     
     private bool isGrounded;
 
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        rigidbody.velocity = new Vector2(Input.GetAxis("Horizontal") * movementSpeed, rigidbody.velocity.y);
+        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * movementSpeed, rb.velocity.y);
 
-        isGrounded = rigidbody.velocity.y < 0.1f;
+        isGrounded = rb.velocity.y < 0.1f;
         Debug.Log(isGrounded);
 
-        if (Input.GetButtonDown("Jump") && Mathf.Abs(rigidbody.velocity.y) < 0.01f)
-            rigidbody.velocity += Vector2.up * jumpSpeed;
+        if (Input.GetButtonDown("Jump") && Mathf.Abs(rb.velocity.y) < 0.01f)
+            rb.velocity += Vector2.up * jumpSpeed;
     }
 }
