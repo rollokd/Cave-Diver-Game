@@ -6,9 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public float movementSpeed;
     public float jumpSpeed;
-    public float distanceToGround;
-
-    private Rigidbody2D rigidbody;
+    public Rigidbody2D rigidbody;
+    
     private bool isGrounded;
 
     // Start is called before the first frame update
