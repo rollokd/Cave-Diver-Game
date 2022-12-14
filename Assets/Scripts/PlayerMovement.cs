@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
     public float movementSpeed;
     public float jumpSpeed;
     public Rigidbody2D rb;
-    public bool sidewaysMovement;
     
     private bool isGrounded;
     private Animator animator;
