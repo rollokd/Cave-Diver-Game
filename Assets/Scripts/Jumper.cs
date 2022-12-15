@@ -2,21 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SidewaysEnemy : Character
+public class Jumper : Character
 {
     [SerializeField]
-    private float horizontalSpeed;
+    private float jumpForce;
     [SerializeField]
-    private float maxHorizontal;
-    [SerializeField]
-    private float initialHorizontal;
+    private float jumpDelay;
 
     private float timer = 0;
+    private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -24,10 +23,12 @@ public class SidewaysEnemy : Character
     {
         timer += Time.deltaTime;
 
-        float horiz = Mathf.Sin(timer * horizontalSpeed) * maxHorizontal;
-        horiz += initialHorizontal;
-
-        transform.position = new Vector2(horiz, transform.position.y);
+        if (timer > jumpDelay)
+        {
+            timer = 0;
+            rb.AddForce(new Vector2(0, jumpForce));
+            Debug.Log("Jump");
+        }
     }
 
     public new void Die()
