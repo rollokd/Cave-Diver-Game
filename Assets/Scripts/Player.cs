@@ -8,4 +8,12 @@ public class Player : Character
     {
         Debug.Log("Character die");
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("ooga");
+        if (collision.gameObject.tag == "Enemy")
+            Hit();
+    }
+
 }

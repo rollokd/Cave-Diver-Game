@@ -34,4 +34,10 @@ public class SidewaysEnemy : Character
     {
         Debug.Log("Enemy die");
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+            Hit();
+    }
 }
