@@ -11,5 +11,6 @@ public class FriendMovement : MonoBehaviour
     void Update()
     {
         gameObject.transform.position = new Vector2(player.transform.position.x, gameObject.transform.position.y);
+        gameObject.transform.localScale = player.transform.localScale;
     }
 }

@@ -21,7 +21,17 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * movementSpeed, rb.velocity.y);
+        float horizontal = Input.GetAxis("Horizontal");
+        rb.velocity = new Vector2(horizontal * movementSpeed, rb.velocity.y);
+
+        if (horizontal < 0)
+        {
+            transform.localScale = new Vector3(-5f, 5f, 1f);
+        }
+        else
+        {
+            transform.localScale = new Vector3(5f, 5f, 1f);
+        }
 
         animator.SetBool("Sideways", Mathf.Abs(rb.velocity.x) > 0);
 
