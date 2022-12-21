@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     
     private bool isGrounded;
     private Animator animator;
+    public int maxJumps;
+    private int jumps;
 
     // Start is called before the first frame update
     void Start()
@@ -35,17 +37,24 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetBool("Sideways", Mathf.Abs(rb.velocity.x) > 0);
 
-        isGrounded = rb.velocity.y < 0.1f;
-        Debug.Log(isGrounded);
+        isGrounded = Mathf.Abs(rb.velocity.y) < 0.01f;
+        if (isGrounded)
+            jumps = 0;
 
-        if (Input.GetButtonDown("Jump") && Mathf.Abs(rb.velocity.y) < 0.01f)
+        if (Input.GetButtonDown("Jump") && (isGrounded || jumps < maxJumps))
         {
             rb.velocity += Vector2.up * jumpSpeed;
+            jumps++;
             animator.SetBool("Jump", true);
         }
         else
         {
             animator.SetBool("Jump", false);
         }
+    }
+
+    public void AddJump()
+    {
+        maxJumps++;
     }
 }
