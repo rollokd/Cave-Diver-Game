@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class Player : Character
 {
+    [SerializeField]
+    private GameObject waterCollision;
     public new void Die()
     {
         Debug.Log("Character die");
     }
 
-    public void increaseMaxHP(int amount)
+    public void IncreaseMaxHP(int amount)
     {
         maxHealth += amount;
         health += amount;
+    }
+
+    public void WalkOnWater()
+    {
+        waterCollision.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
