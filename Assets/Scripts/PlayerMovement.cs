@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     
     private bool isGrounded;
     private Animator animator;
-    public int maxJumps = 1;
+    private int maxJumps = 1;
     private int jumps;
 
     // Start is called before the first frame update
