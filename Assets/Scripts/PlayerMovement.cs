@@ -57,4 +57,9 @@ public class PlayerMovement : MonoBehaviour
     {
         maxJumps++;
     }
+
+    public void increaseMovementSpeed(int amount)
+    {
+        movementSpeed += amount;
+    }
 }
