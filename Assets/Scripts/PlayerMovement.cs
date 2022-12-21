@@ -4,20 +4,31 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float movementSpeed;
-    public float jumpSpeed;
     public Rigidbody2D rb;
+    public float maxFuel;
+    public float fuel;
+    [SerializeField]
+    private float movementSpeed;
+    [SerializeField]
+    private float jumpSpeed;
+    [SerializeField]
+    private float fuelCost;
+    [SerializeField]
+    private float fuelRegen;
     
     private bool isGrounded;
     private Animator animator;
-    private int maxJumps = 1;
+    public int maxJumps = 1;
     private int jumps;
+    public bool jetPack = false;
+    private bool canUseJetPack = true;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        fuel = maxFuel;
     }
 
     // Update is called once per frame
@@ -38,8 +49,12 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("Sideways", Mathf.Abs(rb.velocity.x) > 0);
 
         isGrounded = Mathf.Abs(rb.velocity.y) < 0.01f;
+
         if (isGrounded)
             jumps = 0;
+
+        if (fuel > 20)
+            canUseJetPack = true;
 
         if (Input.GetButtonDown("Jump") && (isGrounded || jumps < maxJumps))
         {
@@ -47,9 +62,21 @@ public class PlayerMovement : MonoBehaviour
             jumps++;
             animator.SetBool("Jump", true);
         }
+        else if (Input.GetButton("Jump") && jetPack && (fuel - (fuelCost * Time.deltaTime) > 0) && rb.velocity.y < -0.01f && canUseJetPack)
+        {
+            Debug.Log("jetapck");
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+            fuel -= fuelCost * Time.deltaTime;
+            animator.SetBool("Jump", false);
+
+            if (fuel < 0.01f)
+                canUseJetPack = false;
+        }
         else
         {
             animator.SetBool("Jump", false);
+            if (fuel + fuelRegen * Time.deltaTime < maxFuel)
+                fuel += fuelRegen * Time.deltaTime;
         }
     }
 
