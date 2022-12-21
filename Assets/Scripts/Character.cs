@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    public int maxHealth;
     public int health;
 
     // Start is called before the first frame update

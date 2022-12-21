@@ -9,6 +9,12 @@ public class Player : Character
         Debug.Log("Character die");
     }
 
+    public void increaseMaxHP(int amount)
+    {
+        maxHealth += amount;
+        health += amount;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("ooga");
