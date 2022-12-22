@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    public float maxFuel;
-    public float fuel;
+    
+    [SerializeField]
+    private Vector3 boxSize;
+    [SerializeField]
+    private float maxDistance;
+    [SerializeField]
+    private LayerMask layerMask;
+    [SerializeField]
+    private float maxFuel;
     [SerializeField]
     private float movementSpeed;
     [SerializeField]
@@ -15,13 +21,17 @@ public class PlayerMovement : MonoBehaviour
     private float fuelCost;
     [SerializeField]
     private float fuelRegen;
-    
+    [SerializeField]
+    private int maxJumps = 1;
+    [SerializeField]
+    private bool jetPack = false;
+
+    private float fuel;
     private bool isGrounded;
     private Animator animator;
-    public int maxJumps = 1;
     private int jumps;
-    public bool jetPack = false;
     private bool canUseJetPack = true;
+    private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetBool("Sideways", Mathf.Abs(rb.velocity.x) > 0);
 
-        isGrounded = Mathf.Abs(rb.velocity.y) < 0.01f;
+        isGrounded = Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, maxDistance, layerMask);
 
         if (isGrounded)
             jumps = 0;
@@ -89,4 +99,12 @@ public class PlayerMovement : MonoBehaviour
     {
         movementSpeed += amount;
     }
+
+
+    // Drawing of GroundedBox
+    //void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawCube(transform.position - transform.up * maxDistance, boxSize);
+    //}
 }
