@@ -202,6 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f9a073084eb7b54e892a5f541323a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  alive: 1
+  maxHealth: 3
   health: 3
   waterCollision: {fileID: 0}

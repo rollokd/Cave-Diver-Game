@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    public bool alive = true;
+
     [SerializeField]
     protected int maxHealth;
     [SerializeField]
@@ -35,5 +37,6 @@ public class Character : MonoBehaviour
     public void Die()
     {
         Debug.Log("Die");
+        alive = false;
     }
 }
