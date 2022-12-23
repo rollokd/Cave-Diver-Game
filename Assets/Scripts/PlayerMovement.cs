@@ -32,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     private int jumps;
     private bool canUseJetPack = true;
     private Rigidbody2D rb;
+    
+    private bool facingRight = true;
 
     // Start is called before the first frame update
     void Start()
@@ -47,13 +49,19 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(horizontal * movementSpeed, rb.velocity.y);
 
-        if (horizontal < 0)
-        {
-            transform.localScale = new Vector3(-5f, 5f, 1f);
-        }
-        else
-        {
-            transform.localScale = new Vector3(5f, 5f, 1f);
+        // if (horizontal < 0)
+        // {
+        //     transform.localScale = new Vector3(-5f, 5f, 1f);
+        // }
+        // else
+        // {
+        //     transform.localScale = new Vector3(5f, 5f, 1f);
+        // }
+
+        if(horizontal > 0 && !facingRight){
+            Flip();
+        }else if(horizontal < 0 && facingRight){
+            Flip();
         }
 
         animator.SetBool("Sideways", Mathf.Abs(rb.velocity.x) > 0);
@@ -107,4 +115,11 @@ public class PlayerMovement : MonoBehaviour
     //    Gizmos.color = Color.red;
     //    Gizmos.DrawCube(transform.position - transform.up * maxDistance, boxSize);
     //}
+
+    public void Flip(){
+
+        facingRight = !facingRight;
+
+        transform.Rotate(0f,180f,0f);
+    }
 }
