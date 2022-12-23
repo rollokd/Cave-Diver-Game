@@ -8,15 +8,14 @@ public class Crab : Character
     private float horizontalSpeed;
     [SerializeField]
     private float maxHorizontal;
-    [SerializeField]
-    private float initialHorizontal;
 
+    private float initialHorizontal;
     private float timer = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        initialHorizontal = transform.position.x;
     }
 
     // Update is called once per frame
@@ -24,8 +23,7 @@ public class Crab : Character
     {
         timer += Time.deltaTime;
 
-        float horiz = Mathf.Sin(timer * horizontalSpeed) * maxHorizontal;
-        horiz += initialHorizontal;
+        float horiz = Mathf.Sin(timer * horizontalSpeed) * maxHorizontal + initialHorizontal;
 
         transform.position = new Vector2(horiz, transform.position.y);
     }

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public int maxHealth;
-    public int health;
+    [SerializeField]
+    protected int maxHealth;
+    [SerializeField]
+    protected int health;
 
     // Start is called before the first frame update
     void Start()
