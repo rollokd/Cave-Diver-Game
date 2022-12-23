@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && (isGrounded || jumps < maxJumps))
         {
-            rb.velocity += Vector2.up * jumpSpeed;
+            rb.velocity = new Vector2(rb.velocity.x, 0) + Vector2.up * jumpSpeed;
             jumps++;
             animator.SetBool("Jump", true);
         }
