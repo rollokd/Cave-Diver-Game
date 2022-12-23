@@ -106,9 +106,9 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 8
-  maxFuel: 40
+  maxFuel: 30
   movementSpeed: 3
-  jumpSpeed: 7
+  jumpSpeed: 9
   fuelCost: 100
   fuelRegen: 10
   maxJumps: 2
