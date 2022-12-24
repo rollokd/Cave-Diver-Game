@@ -66,6 +66,11 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetBool("Sideways", Mathf.Abs(rb.velocity.x) > 0);
 
+        //shooting animation
+        if(Input.GetButtonDown("Fire1")){
+            animator.SetBool("Shoot", true);
+        }
+
         isGrounded = Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, maxDistance, layerMask);
 
         if (isGrounded)

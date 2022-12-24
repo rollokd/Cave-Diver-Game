@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 8583886961185821640}
   - component: {fileID: 8583886961185821641}
   - component: {fileID: 8583886961185821646}
+  - component: {fileID: 7784987219539870781}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -238,3 +239,17 @@ MonoBehaviour:
   maxHealth: 3
   health: 3
   waterCollision: {fileID: 0}
+--- !u!114 &7784987219539870781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8583886961185821686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7e30e1b794d4c1ab498e3432873de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 2997673211159996971}
+  bulletPrefab: {fileID: 1251167273829517273, guid: 78fc9973ca6404d0787219268dd29240, type: 3}

@@ -220,13 +220,13 @@ AnimatorStateMachine:
     m_Position: {x: 250, y: 40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1375905092385089247}
-    m_Position: {x: 540, y: 40, z: 0}
+    m_Position: {x: 540, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7814659252221803928}
-    m_Position: {x: 400, y: -120, z: 0}
+    m_Position: {x: 370, y: -150, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 6865791678783317241}
-    m_Position: {x: 284.35623, y: -220.78821, z: 0}
+    m_State: {fileID: 7014230613492921108}
+    m_Position: {x: 700, y: -190, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -258,6 +258,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: Shoot
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -271,14 +277,14 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &6865791678783317241
+--- !u!1102 &7014230613492921108
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New State
+  m_Name: Shoot animation
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
