@@ -64,11 +64,19 @@ public class PlayerMovement : MonoBehaviour
             Flip();
         }
 
-        animator.SetBool("Sideways", Mathf.Abs(rb.velocity.x) > 0);
+        if(Mathf.Abs(rb.velocity.x) > 0 && !Input.GetButtonDown("Jump")){
+            animator.SetBool("Sideways", true);
+        }else{
+            animator.SetBool("Sideways", false);
+        }
+
+        // animator.SetBool("Sideways", Mathf.Abs(rb.velocity.x) > 0);
 
         //shooting animation
         if(Input.GetButtonDown("Fire1")){
             animator.SetBool("Shoot", true);
+        }else{
+            animator.SetBool("Shoot", false);
         }
 
         isGrounded = Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, maxDistance, layerMask);
