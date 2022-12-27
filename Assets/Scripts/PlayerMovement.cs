@@ -49,40 +49,17 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(horizontal * movementSpeed, rb.velocity.y);
 
-        // if (horizontal < 0)
-        // {
-        //     transform.localScale = new Vector3(-5f, 5f, 1f);
-        // }
-        // else
-        // {
-        //     transform.localScale = new Vector3(5f, 5f, 1f);
-        // }
-
-        if(horizontal > 0 && !facingRight){
+        if((horizontal > 0 && !facingRight) || (horizontal < 0 && facingRight))
             Flip();
-        }else if(horizontal < 0 && facingRight){
-            Flip();
-        }
 
-        if(Mathf.Abs(rb.velocity.x) > 0 && !Input.GetButtonDown("Jump")){
-            animator.SetBool("Sideways", true);
-        }else{
-            animator.SetBool("Sideways", false);
-        }
-
-        // animator.SetBool("Sideways", Mathf.Abs(rb.velocity.x) > 0);
-
-        //shooting animation
-        if(Input.GetButtonDown("Fire1")){
-            animator.SetBool("Shoot", true);
-        }else{
-            animator.SetBool("Shoot", false);
-        }
-
+        animator.SetBool("Sideways", Mathf.Abs(rb.velocity.x) > 0 && !animator.GetBool("Jump"));
+        
         isGrounded = Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, maxDistance, layerMask);
-
         if (isGrounded)
+        {
+            animator.SetBool("Jump", false);
             jumps = 0;
+        }
 
         if (fuel > 20)
             canUseJetPack = true;
@@ -105,7 +82,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            animator.SetBool("Jump", false);
             if (fuel + fuelRegen * Time.deltaTime < maxFuel)
                 fuel += fuelRegen * Time.deltaTime;
         }
@@ -129,8 +105,8 @@ public class PlayerMovement : MonoBehaviour
     //    Gizmos.DrawCube(transform.position - transform.up * maxDistance, boxSize);
     //}
 
-    public void Flip(){
-
+    public void Flip()
+    {
         facingRight = !facingRight;
 
         transform.Rotate(0f,180f,0f);
