@@ -34,11 +34,12 @@ public class Jumper : Character
     public new void Die()
     {
         Debug.Log("Enemy die");
+        Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Bullet")
-            Hit();
-    }
+    // private void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     if (collision.gameObject.tag == "Bullet")
+    //         Hit();
+    // }
 }
