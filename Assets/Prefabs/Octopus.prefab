@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7912059481227048397}
   - component: {fileID: 7912059481227048399}
   - component: {fileID: 7912059481227048499}
+  - component: {fileID: 4102610986650713256}
   m_Layer: 0
   m_Name: Octopus
   m_TagString: Enemy
@@ -98,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fda73d38059be348a1980b3e6239b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alive: 1
   maxHealth: 1
   health: 1
   horizontalSpeed: 1
@@ -142,3 +144,23 @@ PolygonCollider2D:
       - {x: 0.057357244, y: -0.0104328245}
       - {x: 0.11264187, y: 0.0019000918}
       - {x: 0.11376248, y: 0.06137838}
+--- !u!95 &4102610986650713256
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7912059481227048497}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ec09660f8fe674a469dd972f9e5cfbc9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
