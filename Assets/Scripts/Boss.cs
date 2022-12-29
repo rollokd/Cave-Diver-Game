@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss : Character
+public class Boss : Enemy
 {
     public bool doubleJump;
     [SerializeField]
@@ -34,6 +34,9 @@ public class Boss : Character
             canJumpAgain = true;
 
         rb.velocity = new Vector2(horizontal * movementSpeed, rb.velocity.y);
+
+        if ((rb.velocity.x > 0 && !facingRight) || (rb.velocity.x < 0 && facingRight))
+            Flip();
 
         if (doubleJump && canJumpAgain && !isGrounded && Mathf.Abs(rb.velocity.y) < 0.1f)
         {

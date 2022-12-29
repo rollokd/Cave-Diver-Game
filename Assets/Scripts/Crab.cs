@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crab : Character
+public class Crab : Enemy
 {
     [SerializeField]
     private float horizontalSpeed;
@@ -11,6 +11,7 @@ public class Crab : Character
 
     private float initialHorizontal;
     private float timer = 0;
+    private float prevsin;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +23,12 @@ public class Crab : Character
     void Update()
     {
         timer += Time.deltaTime;
+        float sin = Mathf.Sin(timer * horizontalSpeed);
+        if ((sin > prevsin && !facingRight) || (sin < prevsin && facingRight))
+            Flip();
 
-        float horiz = Mathf.Sin(timer * horizontalSpeed) * maxHorizontal + initialHorizontal;
+        float horiz = sin * maxHorizontal + initialHorizontal;
+        prevsin = sin;
 
         transform.position = new Vector2(horiz, transform.position.y);
     }

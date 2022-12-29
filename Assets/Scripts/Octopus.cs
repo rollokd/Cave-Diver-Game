@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Octopus : Character
+public class Octopus : Enemy
 {
     [SerializeField]
     private float horizontalSpeed;
@@ -17,6 +17,7 @@ public class Octopus : Character
     private float initialHorizontal;
     private float initialVertical;
     private float timer = 0;
+    private float prevsin;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,12 @@ public class Octopus : Character
     {
         timer += Time.deltaTime;
 
-        float horiz = Mathf.Sin(timer * horizontalSpeed) * maxHorizontal + initialHorizontal;
+        float sin = Mathf.Sin(timer * horizontalSpeed);
+        if ((sin > prevsin && !facingRight) || (sin < prevsin && facingRight))
+            Flip();
+
+        float horiz = sin * maxHorizontal + initialHorizontal;
+        prevsin = sin;
 
         float vert = Mathf.Cos(timer * verticalSpeed) * maxVertical + initialVertical;
 
