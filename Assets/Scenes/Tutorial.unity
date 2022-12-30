@@ -5978,7 +5978,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2726781061647186382, guid: 009cf0975031edc45bb88dedb475eba7, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8583886961185821685, guid: 009cf0975031edc45bb88dedb475eba7, type: 3}
       propertyPath: m_RootOrder
@@ -6030,7 +6030,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8583886961185821686, guid: 009cf0975031edc45bb88dedb475eba7, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8583886961185821687, guid: 009cf0975031edc45bb88dedb475eba7, type: 3}
       propertyPath: jetPack
@@ -22231,7 +22231,7 @@ GameObject:
   - component: {fileID: 1331322333}
   - component: {fileID: 1331322332}
   - component: {fileID: 1331322331}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
