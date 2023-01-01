@@ -139,7 +139,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 8
-  maxFuel: 30
+  maxFuel: 10
   movementSpeed: 4
   jumpSpeed: 9
   fuelCost: 100

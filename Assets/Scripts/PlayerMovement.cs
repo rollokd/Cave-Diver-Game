@@ -12,8 +12,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private LayerMask layerMask;
     [SerializeField]
-    private float maxFuel;
-    [SerializeField]
     private float movementSpeed;
     [SerializeField]
     private float jumpSpeed;
@@ -26,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private bool jetPack = false;
 
+    private float maxFuel = 10;
     private float fuel;
     private bool isGrounded;
     private Animator animator;
@@ -61,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
             jumps = 0;
         }
 
-        if (fuel > 20)
+        if (fuel > 9)
             canUseJetPack = true;
 
         if (Input.GetButtonDown("Jump") && (isGrounded || jumps < maxJumps))
@@ -72,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetButton("Jump") && jetPack && (fuel - (fuelCost * Time.deltaTime) > 0) && rb.velocity.y < -0.01f && canUseJetPack)
         {
-            Debug.Log("jetapck");
+            Debug.Log("Jetpack");
             rb.velocity = new Vector2(rb.velocity.x, 0);
             fuel -= fuelCost * Time.deltaTime;
             animator.SetBool("Jump", false);
