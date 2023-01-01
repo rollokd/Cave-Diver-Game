@@ -75,6 +75,28 @@ public class Boss : Enemy
                 Move(1, 4.6f);
                 yield return new WaitForSeconds(5 * 3 / movementSpeed);
             }
+            else
+            {
+                //First block
+                Flip();
+                Move(-1, 3.6f);
+                yield return new WaitForSeconds(2.2f * 3 / movementSpeed);
+                Jump();
+                yield return new WaitForSeconds(3 * 3 / movementSpeed);
+
+                //Back
+                Flip();
+                Move(1, 5.8f);
+                yield return new WaitForSeconds(3.2f * 3 / movementSpeed);
+                Jump();
+                yield return new WaitForSeconds(3 * 3 / movementSpeed);
+
+                //Back left
+                Flip();
+                Move(-1, 2.2f);
+                yield return new WaitForSeconds(3 * 3 / movementSpeed);
+                Flip();
+            }
         }
     }
     public IEnumerator StartRandomFight()
