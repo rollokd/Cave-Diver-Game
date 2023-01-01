@@ -27,7 +27,10 @@ public class Bullet : MonoBehaviour
             jumper.Die();
         }
 
+        if (hitInfo.gameObject.tag != "interactionBox")
+        {
         Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(gameObject);
+        }
     }
 }

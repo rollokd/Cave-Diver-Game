@@ -36,6 +36,7 @@ public class Crab : Enemy
     public new void Die()
     {
         Debug.Log("Enemy die");
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
