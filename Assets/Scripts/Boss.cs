@@ -17,11 +17,13 @@ public class Boss : Enemy
     private Rigidbody2D rb;
     private float horizontal;
     private float jumpSpeed = 9;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         StartCoroutine(StartFight());
     }
 
@@ -92,11 +94,14 @@ public class Boss : Enemy
 
     private void Jump()
     {
+        animator.SetBool("Jump", true);
         rb.velocity = new Vector2(rb.velocity.x, 0) + Vector2.up * jumpSpeed;
     }
 
     private void Move(float horizontalDirection, float time)
     {
+        animator.SetBool("Jump", false);
+        animator.SetBool("Sideways", true);
         horizontal = horizontalDirection;
         StartCoroutine(StopMoving(time*3/movementSpeed));
     }
