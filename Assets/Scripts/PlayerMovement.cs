@@ -48,8 +48,9 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(horizontal * movementSpeed, rb.velocity.y);
 
-        if((horizontal > 0 && !facingRight) || (horizontal < 0 && facingRight))
+        if((horizontal > 0 && !facingRight) || (horizontal < 0 && facingRight)){
             Flip();
+        }
 
         animator.SetBool("Sideways", Mathf.Abs(rb.velocity.x) > 0 && !animator.GetBool("Jump"));
         
