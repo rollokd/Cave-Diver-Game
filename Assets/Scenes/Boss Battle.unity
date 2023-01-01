@@ -83720,7 +83720,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3322523079637289387, guid: e1642791d2fbb5245ad1ce95ca833d7c, type: 3}
       propertyPath: doubleJump
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3322523079637289387, guid: e1642791d2fbb5245ad1ce95ca833d7c, type: 3}
       propertyPath: ground.m_Bits
