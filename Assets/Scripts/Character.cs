@@ -39,4 +39,10 @@ public class Character : MonoBehaviour
         Debug.Log("Die");
         alive = false;
     }
+
+    public void SetHealth(int n)
+    {
+        maxHealth = n;
+        health = n;
+    }
 }
