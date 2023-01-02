@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public bool jetPack = false;
     
     [SerializeField]
     private Vector3 boxSize;
@@ -21,8 +22,6 @@ public class PlayerMovement : MonoBehaviour
     private float fuelRegen;
     [SerializeField]
     private int maxJumps = 1;
-    [SerializeField]
-    private bool jetPack = false;
 
     private float maxFuel = 10;
     private float fuel;
@@ -91,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         maxJumps++;
     }
 
-    public void increaseMovementSpeed(int amount)
+    public void IncreaseMovementSpeed(int amount)
     {
         movementSpeed += amount;
     }
