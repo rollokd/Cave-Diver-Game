@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    public bool rocket;
 
     public Transform firePoint;
     public GameObject bulletPrefab;

@@ -5,6 +5,8 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public bool alive = true;
+    public float healthMultiplier;
+    public float damageMultiplier;
 
     [SerializeField]
     protected int maxHealth;
@@ -38,5 +40,12 @@ public class Character : MonoBehaviour
     {
         Debug.Log("Die");
         alive = false;
+    }
+
+    public void SetHealth(int n)
+    {
+        var h = (int)(n * healthMultiplier);
+        maxHealth = h;
+        health = h;
     }
 }
