@@ -21,13 +21,10 @@ public class GameController : MonoBehaviour
     private float multiplierValues = 1.5f;
     private PlayerMovement playerMovement;
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject);
-    }
 
     private void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
         playerMovement = player.GetComponent<PlayerMovement>();
     }
 
@@ -106,6 +103,7 @@ public class GameController : MonoBehaviour
                 yield return null;
             }
             SceneManager.LoadScene(newScene);
+            Fade(false, fadeSpeed);
         }
         else
         {
