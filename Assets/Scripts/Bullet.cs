@@ -15,28 +15,29 @@ public class Bullet : MonoBehaviour
         rb.velocity = transform.right * speed;
     }
 
-    void OnTriggerEnter2D(Collider2D hitInfo){
+    void OnTriggerEnter2D(Collider2D hitInfo)
+    {
         Debug.Log(hitInfo.name);
         Crab crab = hitInfo.GetComponent<Crab>();
         if(crab != null){
             crab.Hit();
+            Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
         }
 
         Jumper jumper = hitInfo.GetComponent<Jumper>();
         if(jumper != null){
             jumper.Hit();
+            Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
         }
 
         Octopus octopus = hitInfo.GetComponent<Octopus>();
         if (octopus != null)
         {
             octopus.Hit();
-        }
-
-        if (hitInfo.gameObject.tag != "interactionBox")
-        {
-        Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(gameObject);
+            Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
         }
     }
 }

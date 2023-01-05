@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -79,5 +81,42 @@ public class GameController : MonoBehaviour
             playerMovement.IncreaseMovementSpeed(3);
 
         playerMovement.jetPack = !chosen;
+    }
+
+    [SerializeField]
+    private GameObject blackOutSquare;
+
+    public void Fade(bool black, int speed, string newScene = null)
+    {
+        StartCoroutine(FadeBlackOutSquare(black, speed, newScene));
+    }
+
+    public IEnumerator FadeBlackOutSquare(bool fadeToBlack, int fadeSpeed, string newScene = null)
+    {
+        Color objectColour = blackOutSquare.GetComponent<Image>().color;
+        float fadeAmount;
+        if (fadeToBlack)
+        {
+            while (blackOutSquare.GetComponent<Image>().color.a < 1)
+            {
+                fadeAmount = objectColour.a + (fadeSpeed * Time.deltaTime);
+
+                objectColour = new Color(objectColour.r, objectColour.g, objectColour.b, fadeAmount);
+                blackOutSquare.GetComponent<Image>().color = objectColour;
+                yield return null;
+            }
+            SceneManager.LoadScene(newScene);
+        }
+        else
+        {
+            while (blackOutSquare.GetComponent<Image>().color.a > 0)
+            {
+                fadeAmount = objectColour.a - (fadeSpeed * Time.deltaTime);
+
+                objectColour = new Color(objectColour.r, objectColour.g, objectColour.b, fadeAmount);
+                blackOutSquare.GetComponent<Image>().color = objectColour;
+                yield return null;
+            }
+        }
     }
 }
