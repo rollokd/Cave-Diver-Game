@@ -12,6 +12,8 @@ public class Character : MonoBehaviour
     protected int maxHealth;
     [SerializeField]
     protected int health;
+    [SerializeField]
+    protected Healthbar healthbar;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,7 @@ public class Character : MonoBehaviour
     {
         Debug.Log("Hit");
         health--;
+        healthbar.SetHealth(health, maxHealth);
         
         if (health <= 0)
         {
@@ -41,12 +44,14 @@ public class Character : MonoBehaviour
         health++;
         if (health > maxHealth)
             health = maxHealth;
+        healthbar.SetHealth(health, maxHealth);
     }
 
-    public void Die()
+    public virtual void Die()
     {
         Debug.Log("Die");
         alive = false;
+        Destroy(gameObject);
     }
 
     public void SetHealth(int n)

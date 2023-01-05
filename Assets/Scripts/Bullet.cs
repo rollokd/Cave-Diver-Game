@@ -19,12 +19,18 @@ public class Bullet : MonoBehaviour
         Debug.Log(hitInfo.name);
         Crab crab = hitInfo.GetComponent<Crab>();
         if(crab != null){
-            crab.Die();
+            crab.Hit();
         }
 
         Jumper jumper = hitInfo.GetComponent<Jumper>();
         if(jumper != null){
-            jumper.Die();
+            jumper.Hit();
+        }
+
+        Octopus octopus = hitInfo.GetComponent<Octopus>();
+        if (octopus != null)
+        {
+            octopus.Hit();
         }
 
         if (hitInfo.gameObject.tag != "interactionBox")

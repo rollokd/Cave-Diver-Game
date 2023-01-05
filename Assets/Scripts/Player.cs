@@ -1,12 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : Character
 {
-    public new void Die()
+    private void Start()
+    {
+        healthbar.slider.maxValue = maxHealth;
+        healthbar.slider.value = health;
+    }
+
+    public override void Die()
     {
         Debug.Log("Character die");
+        SceneManager.LoadScene("Death Screen");
     }
 
     public void IncreaseHP()
