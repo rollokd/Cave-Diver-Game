@@ -411,7 +411,6 @@ GameObject:
   - component: {fileID: 2253570572394495174}
   - component: {fileID: 2253570572394495178}
   - component: {fileID: 2253570572394495181}
-  - component: {fileID: 2253570572394495175}
   m_Layer: 0
   m_Name: Jumper
   m_TagString: Enemy
@@ -505,8 +504,8 @@ MonoBehaviour:
   maxHealth: 0
   health: 1
   healthbar: {fileID: 968368543}
-  jumpForce: 500
-  jumpDelay: 3
+  verticalSpeed: 3
+  maxVertical: 2
 --- !u!60 &2253570572394495178
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -517,7 +516,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -559,24 +558,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!50 &2253570572394495175
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2253570572394495180}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 5
