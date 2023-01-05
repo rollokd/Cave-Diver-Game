@@ -36,6 +36,13 @@ public class Character : MonoBehaviour
         }
     }
 
+    public void Heal()
+    {
+        health++;
+        if (health > maxHealth)
+            health = maxHealth;
+    }
+
     public void Die()
     {
         Debug.Log("Die");
