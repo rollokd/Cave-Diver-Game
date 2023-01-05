@@ -226,7 +226,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 20}
+  m_SizeDelta: {x: 50, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &855320124
 MonoBehaviour:
@@ -395,7 +395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: 1
   slider: {fileID: 855320124}
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 0.7, z: 0}
   low: {r: 1, g: 0, b: 0, a: 1}
   high: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &2253570572394495180
@@ -501,8 +501,8 @@ MonoBehaviour:
   alive: 1
   healthMultiplier: 0
   damageMultiplier: 0
-  maxHealth: 0
-  health: 1
+  maxHealth: 3
+  health: 3
   healthbar: {fileID: 968368543}
   verticalSpeed: 3
   maxVertical: 2
