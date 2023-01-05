@@ -16,9 +16,15 @@ public class Player : Character
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("ooga");
+        Debug.Log("Player hit something");
         if (collision.gameObject.tag == "Enemy")
             Hit();
+
+        if (collision.gameObject.tag == "Health")
+        {
+            Heal();
+            Destroy(collision.gameObject);
+        }
     }
 
 }
