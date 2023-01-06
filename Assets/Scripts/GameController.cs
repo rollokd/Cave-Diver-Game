@@ -153,6 +153,7 @@ public class GameController : MonoBehaviour
     private void SpareBoss()
     {
         Debug.Log("Spare the boss");
+        SceneManager.LoadScene("Spare Boss Cutscene");
     }
 
     private void FinishBoss()
@@ -163,6 +164,7 @@ public class GameController : MonoBehaviour
     private void Spare()
     {
         Debug.Log("Boss spares your life");
+        SceneManager.LoadScene("Spare Player Cutscene");
     }
 
     private void BossKills()

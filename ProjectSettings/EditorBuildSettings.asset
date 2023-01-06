@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Death screen.unity
     guid: 3d5ec24a3a6cfec48bdd8ec351f236e9
+  - enabled: 1
+    path: Assets/Scenes/Spare Player Cutscene.unity
+    guid: 1355ec5f7adf14e49b078ac791a51a47
+  - enabled: 1
+    path: Assets/Scenes/Spare Boss Cutscene.unity
+    guid: 6c8b837814618fd43bcf78811e76a661
   m_configObjects: {}

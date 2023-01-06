@@ -25,6 +25,7 @@ public class Boss : Enemy
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        gameController = FindObjectOfType<GameController>();
         StartCoroutine(StartFight());
     }
 
