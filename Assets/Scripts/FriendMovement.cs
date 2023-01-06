@@ -10,7 +10,6 @@ public class FriendMovement : MonoBehaviour
     private bool facingRight = true;
     private Animator animator;
     private Animator playerAnimator;
-    private Vector3 prevPos;
 
     private void Start()
     {
@@ -30,13 +29,7 @@ public class FriendMovement : MonoBehaviour
         gameObject.transform.position = new Vector2(player.transform.position.x, gameObject.transform.position.y);
         gameObject.transform.localScale = player.transform.localScale;
 
-        Vector3 pos = transform.position;
-
-        Debug.Log(pos);
-        Debug.Log(pos != prevPos);
         animator.SetBool("Sideways", playerAnimator.GetBool("Sideways"));
-
-        prevPos = pos;
     }
 
     public void Flip()

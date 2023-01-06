@@ -13,7 +13,8 @@ public class CameraChanger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Hit the trigegr");
+        Debug.Log("Hit the trigger");
+
         if (collision.gameObject.tag == "Player")
             newCam.Priority = mainFollowCam.Priority + 1;
     }
