@@ -18,6 +18,7 @@ public class Boss : Enemy
     private float horizontal;
     private float jumpSpeed = 9;
     private Animator animator;
+    private GameController gameController;
 
     // Start is called before the first frame update
     void Start()
@@ -132,6 +133,12 @@ public class Boss : Enemy
     {
         yield return new WaitForSeconds(time);
         horizontal = 0;
+    }
+
+    public override void Die()
+    {
+        Debug.Log("Character die");
+        gameController.KillBoss();
     }
 
     // Drawing of GroundedBox

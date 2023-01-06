@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Player : Character
 {
+
+    private GameController gameController;
+
     private void Start()
     {
         healthbar.slider.maxValue = maxHealth;
@@ -14,7 +17,14 @@ public class Player : Character
     public override void Die()
     {
         Debug.Log("Character die");
-        SceneManager.LoadScene("Death Screen");
+        if (!gameController.bossFight)
+        {
+            SceneManager.LoadScene("Death Screen");
+        }
+        else
+        {
+            gameController.DieInBoss();
+        }
     }
 
     public void IncreaseHP()

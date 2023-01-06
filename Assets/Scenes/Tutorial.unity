@@ -7491,18 +7491,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8583886961185821687, guid: 009cf0975031edc45bb88dedb475eba7, type: 3}
-      propertyPath: jetPack
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8583886961185821687, guid: 009cf0975031edc45bb88dedb475eba7, type: 3}
-      propertyPath: maxJumps
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8583886961185821687, guid: 009cf0975031edc45bb88dedb475eba7, type: 3}
-      propertyPath: movementSpeed
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 009cf0975031edc45bb88dedb475eba7, type: 3}
 --- !u!1 &1067344367

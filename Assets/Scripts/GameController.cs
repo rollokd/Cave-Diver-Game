@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
     public int feelings {get; private set;}
     public int bossHealth { get; private set; }
 
+    public bool bossFight = false;
+
     [SerializeField]
     private int damageAmountToBoss;
     [SerializeField]
@@ -20,6 +22,7 @@ public class GameController : MonoBehaviour
 
     private float multiplierValues = 1.5f;
     private PlayerMovement playerMovement;
+    
 
 
     private void Start()
@@ -116,5 +119,54 @@ public class GameController : MonoBehaviour
                 yield return null;
             }
         }
+    }
+
+    public void EnterBossFight()
+    {
+        bossFight = true;
+    }
+
+    public void DieInBoss()
+    {
+        if (feelings >= 0)
+        {
+            Spare();
+        }
+        else
+        {
+            BossKills();
+        }
+    }
+
+    public void KillBoss()
+    {
+        if (feelings >= 0)
+        {
+            SpareBoss();
+        }
+        else
+        {
+            FinishBoss();
+        }
+    }
+
+    private void SpareBoss()
+    {
+        Debug.Log("Spare the boss");
+    }
+
+    private void FinishBoss()
+    {
+        Debug.Log("Finish the boss");
+    }
+
+    private void Spare()
+    {
+        Debug.Log("Boss spares your life");
+    }
+
+    private void BossKills()
+    {
+        Debug.Log("Boss kills you");
     }
 }
