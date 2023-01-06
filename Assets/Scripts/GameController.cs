@@ -159,6 +159,7 @@ public class GameController : MonoBehaviour
     private void FinishBoss()
     {
         Debug.Log("Finish the boss");
+        SceneManager.LoadScene("Kill Boss Cutscene");
     }
 
     private void Spare()
@@ -170,5 +171,6 @@ public class GameController : MonoBehaviour
     private void BossKills()
     {
         Debug.Log("Boss kills you");
+        SceneManager.LoadScene("Kill Player Cutscene");
     }
 }
