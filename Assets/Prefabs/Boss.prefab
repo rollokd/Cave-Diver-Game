@@ -313,7 +313,7 @@ RectTransform:
   m_Children:
   - {fileID: 750290587}
   m_Father: {fileID: 6429995217092860508}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -398,6 +398,37 @@ MonoBehaviour:
   offset: {x: 0, y: 0.7, z: 0}
   low: {r: 1, g: 0, b: 0, a: 1}
   high: {r: 0, g: 1, b: 0, a: 1}
+--- !u!1 &79380480447552560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 15881313474046884}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &15881313474046884
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79380480447552560}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.16200009, y: 0.028999997, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6429995217092860508}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6429995217092860511
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,6 +443,7 @@ GameObject:
   - component: {fileID: 6429995217092860514}
   - component: {fileID: 6429995217092860513}
   - component: {fileID: 6350274821780256922}
+  - component: {fileID: -4668418740411263131}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -431,6 +463,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 15881313474046884}
   - {fileID: 1659571841}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -589,3 +622,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &-4668418740411263131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6429995217092860511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84931c17164340f46b30f4eea7bad330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 15881313474046884}
+  bulletPrefab: {fileID: 1251167273829517273, guid: e78c35cba17eed3409e541533f00ba41, type: 3}
+  burstDelay: 1
+  subBurstDelay: 0.2
+  burstCount: 3
