@@ -6,17 +6,15 @@ public class popUP : MonoBehaviour
 {
     public GameObject popUp;
 
-    private void OnTriggerEnter2D(Collider2D other){
-        
-        if(other.gameObject.tag == "Player"){
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Player")
             popUp.SetActive(true);
-        }
     }
     
-    private void OnTriggerExit2D(Collider2D other){
-        
-        if(other.gameObject.tag == "Player"){
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Player")
             popUp.SetActive(false);
-        }
     }
 }

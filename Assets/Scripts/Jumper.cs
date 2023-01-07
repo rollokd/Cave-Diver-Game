@@ -5,29 +5,30 @@ using UnityEngine;
 public class Jumper : Character
 {
     [SerializeField]
-    private float jumpForce;
+    private float verticalSpeed;
     [SerializeField]
-    private float jumpDelay;
+    private float maxVertical;
 
+    private float initialVertical;
     private float timer = 0;
-    private Rigidbody2D rb;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        initialVertical = transform.position.y;
     }
 
     // Update is called once per frame
     void Update()
     {
+
         timer += Time.deltaTime;
 
-        if (timer > jumpDelay)
+        float cos = Mathf.Cos(timer * verticalSpeed);
+
+        if (cos >= 0)
         {
-            timer = 0;
-            rb.AddForce(new Vector2(0, jumpForce));
-            Debug.Log("Jump");
+            float vert = cos * maxVertical + initialVertical;
+            transform.position = new Vector2(transform.position.x, vert);
         }
     }
 

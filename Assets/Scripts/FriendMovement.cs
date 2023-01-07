@@ -6,7 +6,16 @@ public class FriendMovement : MonoBehaviour
 {
 
     public PlayerMovement player;
+
     private bool facingRight = true;
+    private Animator animator;
+    private Animator playerAnimator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        playerAnimator = player.GetComponent<Animator>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -19,6 +28,8 @@ public class FriendMovement : MonoBehaviour
 
         gameObject.transform.position = new Vector2(player.transform.position.x, gameObject.transform.position.y);
         gameObject.transform.localScale = player.transform.localScale;
+
+        animator.SetBool("Sideways", playerAnimator.GetBool("Sideways"));
     }
 
     public void Flip()

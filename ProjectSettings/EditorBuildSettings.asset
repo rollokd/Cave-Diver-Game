@@ -6,6 +6,30 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 38a093715a7a7684595f2548c05daf19
+  - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Level 1.unity
+    guid: 56927a140db0ae34491dfd6a011a28a3
+  - enabled: 1
+    path: Assets/Scenes/Boss Battle.unity
+    guid: b9cc2dd3abd20c24c945ef1406d6630c
+  - enabled: 1
+    path: Assets/Scenes/Death screen.unity
+    guid: 3d5ec24a3a6cfec48bdd8ec351f236e9
+  - enabled: 1
+    path: Assets/Scenes/Spare Player Cutscene.unity
+    guid: 1355ec5f7adf14e49b078ac791a51a47
+  - enabled: 1
+    path: Assets/Scenes/Spare Boss Cutscene.unity
+    guid: 6c8b837814618fd43bcf78811e76a661
+  - enabled: 1
+    path: Assets/Scenes/Kill Player Cutscene.unity
+    guid: aceb536be5d03a440a1fea25e69551dd
+  - enabled: 1
+    path: Assets/Scenes/Kill Boss Cutscene.unity
+    guid: 7dd6df8d72526094787c5a5b846e26f4
   m_configObjects: {}

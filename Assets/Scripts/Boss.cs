@@ -18,12 +18,14 @@ public class Boss : Enemy
     private float horizontal;
     private float jumpSpeed = 9;
     private Animator animator;
+    private GameController gameController;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        gameController = FindObjectOfType<GameController>();
         StartCoroutine(StartFight());
     }
 
@@ -132,6 +134,12 @@ public class Boss : Enemy
     {
         yield return new WaitForSeconds(time);
         horizontal = 0;
+    }
+
+    public override void Die()
+    {
+        Debug.Log("Character die");
+        gameController.KillBoss();
     }
 
     // Drawing of GroundedBox

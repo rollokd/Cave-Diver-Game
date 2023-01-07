@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy : Character
 {
-
     protected bool facingRight = false;
 
     protected void Flip()
