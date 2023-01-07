@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Player : Character
 {
-
     private GameController gameController;
 
     private void Start()
     {
+        gameController = FindObjectOfType<GameController>();
         healthbar.slider.maxValue = maxHealth;
         healthbar.slider.value = health;
     }

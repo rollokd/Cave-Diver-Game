@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField]
+    private bool isBoss = false;
+
     public float speed = 20f;
     private Rigidbody2D rb;
     public GameObject impactEffect;
@@ -17,6 +20,25 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
+        if (isBoss)
+        {
+            Player player = hitInfo.GetComponent<Player>();
+            if (player != null)
+            {
+                player.Hit();
+                Instantiate(impactEffect, transform.position, transform.rotation);
+                Destroy(gameObject);
+            }
+
+            if (hitInfo.gameObject.layer == 3) //3 is ground
+            {
+                Instantiate(impactEffect, transform.position, transform.rotation);
+                Destroy(gameObject);
+            }
+
+            return;
+        }
+
         Debug.Log(hitInfo.name);
         Crab crab = hitInfo.GetComponent<Crab>();
         if(crab != null){
