@@ -20,6 +20,7 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
+        //Debug.Log("Bullet hit " + hitInfo.name);
         if (isBoss)
         {
             Player player = hitInfo.GetComponent<Player>();
@@ -39,7 +40,15 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-        Debug.Log(hitInfo.name);
+        if (hitInfo.gameObject.tag == "BossInteraction")
+        {
+            BossInteractionFade bossInteraction = hitInfo.GetComponent<BossInteractionFade>();
+            if (bossInteraction != null)
+            {
+                bossInteraction.Teleport();
+            }
+        }
+
         Crab crab = hitInfo.GetComponent<Crab>();
         if(crab != null){
             crab.Hit();
