@@ -45,14 +45,26 @@ TagManager:
   - name: Background
     uniqueID: 238892869
     locked: 0
+  - name: Water BG
+    uniqueID: 351279295
+    locked: 0
   - name: Floor detail
     uniqueID: 2250774739
+    locked: 0
+  - name: Water FD
+    uniqueID: 3679758699
     locked: 0
   - name: Terrain
     uniqueID: 3464523559
     locked: 0
+  - name: Water Terrain
+    uniqueID: 3783130371
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Water FG
+    uniqueID: 3449270645
     locked: 0
   - name: Foreground
     uniqueID: 3538755601
