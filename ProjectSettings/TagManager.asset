@@ -8,6 +8,7 @@ TagManager:
   - interactionBox
   - CameraTrigger
   - Chest
+  - BossInteraction
   layers:
   - Default
   - TransparentFX

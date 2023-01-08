@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public int feelings {get; private set;}
     public int bossHealth { get; private set; }
     public bool bossFight = false;
     public bool paused = false;
@@ -44,6 +43,7 @@ public class GameController : MonoBehaviour
     private bool bossDouble = false;
     private int playerJumps = 0;
     private bool rocket;
+    private int feelings = 1;
 
     private void Start()
     {
@@ -62,19 +62,12 @@ public class GameController : MonoBehaviour
         Debug.Log(chestNumber);
     }
 
-    public void Negative()
-    {
-        feelings--;
-    }
-
-    public void Positive()
-    {
-        feelings++;
-    }
-
     public void HitBossInGame()
     {
+        Debug.Log(feelings + " feelings and " + bossHealth + " health");
         bossHealth -= damageAmountToBoss;
+        feelings--;
+        Debug.Log(feelings + " feelings and " + bossHealth + " health");
     }
 
     public void StartBossFight()
