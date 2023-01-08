@@ -8,8 +8,8 @@ public class GameController : MonoBehaviour
 {
     public int feelings {get; private set;}
     public int bossHealth { get; private set; }
-
     public bool bossFight = false;
+    public bool paused = false;
 
     [SerializeField]
     private int damageAmountToBoss;
@@ -19,16 +19,47 @@ public class GameController : MonoBehaviour
     private Boss boss;
     [SerializeField]
     private GameObject waterCollision;
+    [SerializeField]
+    private GameObject blackOutSquare;
+    [SerializeField]
+    private GameObject chest1;
+    [SerializeField]
+    private GameObject chest2;
+    [SerializeField]
+    private GameObject chest3;
+    [SerializeField]
+    private GameObject chestUI;
+    [SerializeField]
+    private GameObject chestObject1;
+    [SerializeField]
+    private GameObject chestObject2;
+    [SerializeField]
+    private GameObject chestObject3;
 
-    private float multiplierValues = 1.5f;
+
     private PlayerMovement playerMovement;
-    
-
+    private int chestNumber = 1;
+    private bool left;
+    private bool right;
+    private bool bossDouble = false;
+    private int playerJumps = 0;
+    private bool rocket;
 
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
         playerMovement = player.GetComponent<PlayerMovement>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("LeftChoice"))
+            left = true;
+
+        if (Input.GetButtonDown("RightChoice"))
+            right = true;
+
+        Debug.Log(chestNumber);
     }
 
     public void Negative()
@@ -53,21 +84,17 @@ public class GameController : MonoBehaviour
 
     public void DoubleJump(bool chosen)
     {
-        boss.doubleJump = !chosen;
+        bossDouble = !chosen;
 
         if (chosen)
+        {
             playerMovement.AddJump();
+            playerJumps++;
+        }
+
+        rocket = !chosen;
 
         FindObjectOfType<Weapon>().rocket = !chosen;
-    }
-
-    public void HealthChosen(bool health)
-    {
-        boss.healthMultiplier = health ? 1 : multiplierValues;
-        player.healthMultiplier = !health ? 1 : multiplierValues;
-
-        boss.damageMultiplier = !health ? 1 : multiplierValues;
-        player.damageMultiplier = health ? 1 : multiplierValues;
     }
 
     public void WalkOnWater()
@@ -82,9 +109,6 @@ public class GameController : MonoBehaviour
 
         playerMovement.jetPack = !chosen;
     }
-
-    [SerializeField]
-    private GameObject blackOutSquare;
 
     public void Fade(bool black, int speed, string newScene = null)
     {
@@ -172,5 +196,67 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("Boss kills you");
         SceneManager.LoadScene("Kill Player Cutscene");
+    }
+
+    public void Chest()
+    {
+        // Stop game and make selections work
+        StartCoroutine(WaitForInput());
+        Time.timeScale = 0;
+        paused = true;
+
+        // Activate specific options
+        if (chestNumber == 1)
+        {
+            chest1.SetActive(true);
+        }
+        else if (chestNumber == 2)
+        {
+            chest2.SetActive(true);
+        }
+        else if (chestNumber == 3)
+        {
+            chest3.SetActive(true);
+        }
+        chestUI.SetActive(true);
+    }
+
+    private IEnumerator WaitForInput()
+    {
+        while(!left && !right)
+        {
+            yield return null;
+        }
+        
+        if (chestNumber == 1)
+        {
+            DoubleJump(left);
+            Destroy(chestObject1);
+        }
+        else if (chestNumber == 2)
+        {
+            if (left)
+                WalkOnWater();
+
+            Destroy(chestObject2);
+        }
+        else if (chestNumber == 3)
+        {
+            RunFaster(left);
+            Destroy(chestObject3);
+        }
+
+        left = false;
+        right = false;
+
+        chest1.SetActive(false);
+        chest2.SetActive(false);
+        chest3.SetActive(false);
+        chestUI.SetActive(false);
+
+        Time.timeScale = 1;
+        paused = false;
+        Debug.Log("Choice made");
+        chestNumber++;
     }
 }

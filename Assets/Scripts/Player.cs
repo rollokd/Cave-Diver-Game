@@ -27,11 +27,6 @@ public class Player : Character
         }
     }
 
-    public void IncreaseHP()
-    {
-        healthMultiplier = 1.2f;
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Player hit something");
@@ -42,6 +37,11 @@ public class Player : Character
         {
             Heal();
             Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "Chest")
+        {
+            gameController.Chest();
         }
     }
 
