@@ -9,6 +9,7 @@ public class Rocket : MonoBehaviour
 
     public float speed = 15f;
     private Rigidbody2D rb;
+    public GameObject rocketExplosion;
 
     // Start is called before the first frame update
     void Start()
@@ -20,49 +21,58 @@ public class Rocket : MonoBehaviour
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
 
-        Destroy(gameObject);
+        // Destroy(gameObject);
         Debug.Log("Bullet hit " + hitInfo.name);
-        // if (isBoss)
-        // {
-        //     Player player = hitInfo.GetComponent<Player>();
-        //     if (player != null)
-        //     {
-        //         player.Hit();
-        //         // Instantiate(impactEffect, transform.position, transform.rotation);
-        //         Destroy(gameObject);
-        //     }
+        if (isBoss)
+        {
+            Player player = hitInfo.GetComponent<Player>();
+            if (player != null)
+            {
+                player.Hit();
+                player.Hit();
+                Instantiate(rocketExplosion, transform.position, transform.rotation);
+                Destroy(gameObject);
+            }
 
-        //     if (hitInfo.gameObject.layer == 3) //3 is ground
-        //     {
-        //         // Instantiate(impactEffect, transform.position, transform.rotation);
-        //         Destroy(gameObject);
-        //     }
+            if (hitInfo.gameObject.layer == 3) //3 is ground
+            {
+                Instantiate(rocketExplosion, transform.position, transform.rotation);
+                Destroy(gameObject);
+            }
 
-        //     return;
-        // }
+            return;
+        }
 
-        // if (hitInfo.gameObject.tag == "BossInteraction")
-        // {
-        //     BossInteractionFade bossInteraction = hitInfo.GetComponent<BossInteractionFade>();
-        //     if (bossInteraction != null)
-        //     {
-        //         bossInteraction.Teleport();
-        //         bossInteraction.Hit();
-        //     }
-        // }
+        if (hitInfo.gameObject.tag == "BossInteraction")
+        {
+            BossInteractionFade bossInteraction = hitInfo.GetComponent<BossInteractionFade>();
+            if (bossInteraction != null)
+            {
+                bossInteraction.Teleport();
+                bossInteraction.Hit();
+                bossInteraction.Hit();
+            }
+        }
 
-        // Character character = hitInfo.GetComponent<Character>();
-        // if (character != null)
-        // {
-        //     character.Hit();
-        //     // Instantiate(impactEffect, transform.position, transform.rotation);
-        //     Destroy(gameObject);
-        // }
+        Character character = hitInfo.GetComponent<Character>();
+        if (character != null)
+        {
+            character.Hit();
+            character.Hit();
+            Instantiate(rocketExplosion, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
 
-        // if (hitInfo.gameObject.layer == 3 || hitInfo.gameObject.tag == "Chest") //3 is ground
-        // {
-        //     // Instantiate(impactEffect, transform.position, transform.rotation);
-        //     Destroy(gameObject);
-        // }
+        if(hitInfo.gameObject.tag == "RocketDoor"){
+            Instantiate(rocketExplosion, transform.position, transform.rotation);
+            Destroy(hitInfo.gameObject);
+            Destroy(gameObject);
+        }
+
+        if (hitInfo.gameObject.layer == 3 || hitInfo.gameObject.tag == "Chest") //3 is ground
+        {
+            Instantiate(rocketExplosion, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
     }
 }

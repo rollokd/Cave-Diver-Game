@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6930678493515587642}
   - component: {fileID: 3938808683022958769}
   - component: {fileID: 6572901767991538170}
+  - component: {fileID: 1191019578927187547}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Untagged
@@ -122,6 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBoss: 0
   speed: 15
+  rocketExplosion: {fileID: 1424907395483746382, guid: 7c45c8277ae3d4edfa846afd3364fb6a, type: 3}
 --- !u!61 &6572901767991538170
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -148,3 +150,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2272104, y: 0.1563667}
   m_EdgeRadius: 0
+--- !u!95 &1191019578927187547
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6930678493515587643}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a767d342f70a54806ade1a7245b9aa18, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

@@ -1181,17 +1181,49 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 398382373, guid: 76446cf95fbc8a640895233c7f18eac2, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 398382373, guid: 76446cf95fbc8a640895233c7f18eac2, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -756211695
+      objectReference: {fileID: 0}
     - target: {fileID: 867340600, guid: 76446cf95fbc8a640895233c7f18eac2, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 867340602, guid: 76446cf95fbc8a640895233c7f18eac2, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 867340602, guid: 76446cf95fbc8a640895233c7f18eac2, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -756211695
       objectReference: {fileID: 0}
     - target: {fileID: 1480145378, guid: 76446cf95fbc8a640895233c7f18eac2, type: 3}
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1480145379, guid: 76446cf95fbc8a640895233c7f18eac2, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480145379, guid: 76446cf95fbc8a640895233c7f18eac2, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -756211695
+      objectReference: {fileID: 0}
     - target: {fileID: 1972145190, guid: 76446cf95fbc8a640895233c7f18eac2, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972145192, guid: 76446cf95fbc8a640895233c7f18eac2, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972145192, guid: 76446cf95fbc8a640895233c7f18eac2, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -756211695
       objectReference: {fileID: 0}
     - target: {fileID: 932005017795671512, guid: 76446cf95fbc8a640895233c7f18eac2, type: 3}
       propertyPath: m_RootOrder
@@ -2292,7 +2324,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 45373d0ed3182886276f80ce00000000
+  m_ApplyToSortingLayers: bf18f01445373d0ed31828866ba954db276f80ce03fd7de10000000075b197cd1120edd2
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
