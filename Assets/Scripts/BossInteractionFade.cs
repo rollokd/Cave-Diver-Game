@@ -61,4 +61,9 @@ public class BossInteractionFade : MonoBehaviour
             StartCoroutine(TeleportAway(true));
         }
     }
+
+    public void Hit()
+    {
+        gameController.RegretThat();
+    }
 }

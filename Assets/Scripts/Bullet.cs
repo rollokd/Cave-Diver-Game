@@ -46,6 +46,7 @@ public class Bullet : MonoBehaviour
             if (bossInteraction != null)
             {
                 bossInteraction.Teleport();
+                bossInteraction.Hit();
             }
         }
 

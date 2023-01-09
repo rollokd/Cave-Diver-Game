@@ -9,6 +9,7 @@ TagManager:
   - CameraTrigger
   - Chest
   - BossInteraction
+  - Health
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - Speech
   - 
   - 
   - 

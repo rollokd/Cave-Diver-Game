@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public int bossHealth { get; private set; }
+    public int bossHealth = 30;
     public bool bossFight = false;
     public bool paused = false;
 
@@ -34,6 +34,8 @@ public class GameController : MonoBehaviour
     private GameObject chestObject2;
     [SerializeField]
     private GameObject chestObject3;
+    [SerializeField]
+    private GameObject regretThat;
 
 
     private PlayerMovement playerMovement;
@@ -53,13 +55,12 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("LeftChoice"))
+        if (Input.GetButtonDown("LeftChoice") && paused)
             left = true;
 
-        if (Input.GetButtonDown("RightChoice"))
+        if (Input.GetButtonDown("RightChoice") && paused)
             right = true;
 
-        Debug.Log(chestNumber);
     }
 
     public void HitBossInGame()
@@ -251,5 +252,17 @@ public class GameController : MonoBehaviour
         paused = false;
         Debug.Log("Choice made");
         chestNumber++;
+    }
+
+    public void RegretThat()
+    {
+        regretThat.SetActive(true);
+        StartCoroutine(RegretTimer(4));
+    }
+
+    private IEnumerator RegretTimer(int seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        regretThat.SetActive(false);
     }
 }
