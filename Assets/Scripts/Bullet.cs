@@ -50,37 +50,15 @@ public class Bullet : MonoBehaviour
             }
         }
 
-        Crab crab = hitInfo.GetComponent<Crab>();
-        if(crab != null){
-            crab.Hit();
-            Instantiate(impactEffect, transform.position, transform.rotation);
-            Destroy(gameObject);
-        }
-
-        Jumper jumper = hitInfo.GetComponent<Jumper>();
-        if(jumper != null){
-            jumper.Hit();
-            Instantiate(impactEffect, transform.position, transform.rotation);
-            Destroy(gameObject);
-        }
-
-        Octopus octopus = hitInfo.GetComponent<Octopus>();
-        if (octopus != null)
+        Character character = hitInfo.GetComponent<Character>();
+        if (character != null)
         {
-            octopus.Hit();
+            character.Hit();
             Instantiate(impactEffect, transform.position, transform.rotation);
             Destroy(gameObject);
         }
 
-        Boss boss = hitInfo.GetComponent<Boss>();
-        if (boss != null)
-        {
-            boss.Hit();
-            Instantiate(impactEffect, transform.position, transform.rotation);
-            Destroy(gameObject);
-        }
-
-        if (hitInfo.gameObject.layer == 3) //3 is ground
+        if (hitInfo.gameObject.layer == 3 || hitInfo.gameObject.tag == "Chest") //3 is ground
         {
             Instantiate(impactEffect, transform.position, transform.rotation);
             Destroy(gameObject);
