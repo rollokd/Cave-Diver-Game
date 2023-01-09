@@ -98,8 +98,8 @@ public class GameController : MonoBehaviour
         playerMovement.maxJumps = playerJumps;
         boss.doubleJump = bossDouble;
 
-        FindObjectOfType<Weapon>().rocket = bossDouble;
-        FindObjectOfType<Weapon>().rocket = !bossDouble;
+        player.GetComponent<Weapon>().rocket = bossDouble;
+        boss.GetComponent<BossWeapon>().rocket = !bossDouble;
 
         //Third choice
         if (speed)

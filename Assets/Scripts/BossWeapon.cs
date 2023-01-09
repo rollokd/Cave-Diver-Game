@@ -11,6 +11,8 @@ public class BossWeapon : MonoBehaviour
     [SerializeField]
     private GameObject bulletPrefab;
     [SerializeField]
+    private GameObject rocketPrefab;
+    [SerializeField]
     private float burstDelay;
     [SerializeField]
     private float subBurstDelay;
@@ -21,8 +23,17 @@ public class BossWeapon : MonoBehaviour
     private float subBurstTimer;
     private int shots;
 
-    void Update()
+    public void SetRocket(bool boolean)
     {
+        if (boolean)
+        {
+            bulletPrefab = rocketPrefab;
+        }
+        rocket = boolean;
+    }
+
+    void Update()
+    { 
         burstTimer += Time.deltaTime;
 
         if (burstTimer > burstDelay)
