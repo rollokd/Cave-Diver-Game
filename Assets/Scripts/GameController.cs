@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public int bossHealth = 30;
+    public int bossHealthChange = 20;
     public bool bossFight = false;
     public bool paused = false;
 
@@ -14,8 +14,6 @@ public class GameController : MonoBehaviour
     private int damageAmountToBoss;
     [SerializeField]
     private Player player;
-    [SerializeField]
-    private Boss boss;
     [SerializeField]
     private GameObject waterCollision;
     [SerializeField]
@@ -38,6 +36,7 @@ public class GameController : MonoBehaviour
     private GameObject regretThat;
 
 
+    private Boss boss;
     private PlayerMovement playerMovement;
     private int chestNumber = 1;
     private bool left;
@@ -46,6 +45,7 @@ public class GameController : MonoBehaviour
     private int playerJumps = 0;
     private bool rocket;
     private int feelings = 1;
+    private bool speed;
 
     private void Start()
     {
@@ -65,15 +65,54 @@ public class GameController : MonoBehaviour
 
     public void HitBossInGame()
     {
-        Debug.Log(feelings + " feelings and " + bossHealth + " health");
-        bossHealth -= damageAmountToBoss;
+        Debug.Log(feelings + " feelings and " + bossHealthChange + " health");
+        bossHealthChange -= damageAmountToBoss;
         feelings--;
-        Debug.Log(feelings + " feelings and " + bossHealth + " health");
+        Debug.Log(feelings + " feelings and " + bossHealthChange + " health");
     }
 
     public void StartBossFight()
     {
-        boss.SetHealth(bossHealth);
+        StartCoroutine(LoadBossBattleScene());
+    }
+    private IEnumerator LoadBossBattleScene()
+    {
+        var asyncLoadLevel = SceneManager.LoadSceneAsync("Boss Battle", LoadSceneMode.Single);
+        while(!asyncLoadLevel.isDone)
+        {
+            yield return null;
+        }
+        SetUpBossBattle();
+    }
+
+    private void SetUpBossBattle()
+    {
+        player = FindObjectOfType<Player>();
+        playerMovement = player.GetComponent<PlayerMovement>();
+        boss = FindObjectOfType<Boss>();
+
+        bossFight = true;
+        boss.health += bossHealthChange;
+
+        //First choice
+        playerMovement.maxJumps = playerJumps;
+        boss.doubleJump = bossDouble;
+
+        FindObjectOfType<Weapon>().rocket = bossDouble;
+        FindObjectOfType<Weapon>().rocket = !bossDouble;
+
+        //Third choice
+        if (speed)
+        {
+            playerMovement.IncreaseMovementSpeed(3);
+        }
+        else
+        {
+            boss.IncreaseMovementSpeed(3);
+        }
+
+        playerMovement.jetPack = !speed;
+        boss.jetPack = speed;
     }
 
     public void DoubleJump(bool chosen)
@@ -98,6 +137,8 @@ public class GameController : MonoBehaviour
 
     public void RunFaster(bool chosen)
     {
+        speed = chosen;
+
         if (chosen)
             playerMovement.IncreaseMovementSpeed(3);
 
@@ -137,11 +178,6 @@ public class GameController : MonoBehaviour
                 yield return null;
             }
         }
-    }
-
-    public void EnterBossFight()
-    {
-        bossFight = true;
     }
 
     public void DieInBoss()

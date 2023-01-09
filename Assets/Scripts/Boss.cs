@@ -5,6 +5,8 @@ using UnityEngine;
 public class Boss : Enemy
 {
     public bool doubleJump;
+    public bool jetPack;
+
     [SerializeField]
     private Vector3 boxSize;
     [SerializeField]
@@ -23,6 +25,7 @@ public class Boss : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Boss craeted");
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         gameController = FindObjectOfType<GameController>();
@@ -140,6 +143,11 @@ public class Boss : Enemy
     {
         Debug.Log("Character die");
         gameController.KillBoss();
+    }
+
+    public void IncreaseMovementSpeed(int amount)
+    {
+        movementSpeed += amount;
     }
 
     // Drawing of GroundedBox

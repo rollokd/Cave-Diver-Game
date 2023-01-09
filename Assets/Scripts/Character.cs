@@ -5,11 +5,10 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public bool alive = true;
+    public int health;
 
     [SerializeField]
     protected int maxHealth;
-    [SerializeField]
-    protected int health;
     [SerializeField]
     protected Healthbar healthbar;
 
@@ -38,11 +37,5 @@ public class Character : MonoBehaviour
         Debug.Log("Die");
         alive = false;
         Destroy(gameObject);
-    }
-
-    public void SetHealth(int h)
-    {
-        maxHealth = h;
-        health = h;
     }
 }
