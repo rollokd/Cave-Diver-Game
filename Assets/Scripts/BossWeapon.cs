@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BossWeapon : MonoBehaviour
 {
+    public bool rocket;
+
     [SerializeField]
     private Transform firePoint;
     [SerializeField]

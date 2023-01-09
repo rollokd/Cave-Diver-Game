@@ -6,16 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public int bossHealth { get; private set; }
+    public int bossHealthChange = 0;
     public bool bossFight = false;
     public bool paused = false;
 
     [SerializeField]
-    private int damageAmountToBoss;
+    private int damageAmountToBoss = 5;
     [SerializeField]
     private Player player;
-    [SerializeField]
-    private Boss boss;
     [SerializeField]
     private GameObject waterCollision;
     [SerializeField]
@@ -34,8 +32,11 @@ public class GameController : MonoBehaviour
     private GameObject chestObject2;
     [SerializeField]
     private GameObject chestObject3;
+    [SerializeField]
+    private GameObject regretThat;
 
 
+    private Boss boss;
     private PlayerMovement playerMovement;
     private int chestNumber = 1;
     private bool left;
@@ -44,6 +45,7 @@ public class GameController : MonoBehaviour
     private int playerJumps = 0;
     private bool rocket;
     private int feelings = 1;
+    private bool speed;
 
     private void Start()
     {
@@ -53,26 +55,64 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("LeftChoice"))
+        if (Input.GetButtonDown("LeftChoice") && paused)
             left = true;
 
-        if (Input.GetButtonDown("RightChoice"))
+        if (Input.GetButtonDown("RightChoice") && paused)
             right = true;
 
-        Debug.Log(chestNumber);
     }
 
     public void HitBossInGame()
     {
-        Debug.Log(feelings + " feelings and " + bossHealth + " health");
-        bossHealth -= damageAmountToBoss;
+        Debug.Log(feelings + " feelings and " + bossHealthChange + " health");
+        bossHealthChange -= damageAmountToBoss;
         feelings--;
-        Debug.Log(feelings + " feelings and " + bossHealth + " health");
+        Debug.Log(feelings + " feelings and " + bossHealthChange + " health");
     }
 
     public void StartBossFight()
     {
-        boss.SetHealth(bossHealth);
+        StartCoroutine(LoadBossBattleScene());
+    }
+    private IEnumerator LoadBossBattleScene()
+    {
+        var asyncLoadLevel = SceneManager.LoadSceneAsync("Boss Battle", LoadSceneMode.Single);
+        while(!asyncLoadLevel.isDone)
+        {
+            yield return null;
+        }
+        SetUpBossBattle();
+    }
+
+    private void SetUpBossBattle()
+    {
+        player = FindObjectOfType<Player>();
+        playerMovement = player.GetComponent<PlayerMovement>();
+        boss = FindObjectOfType<Boss>();
+
+        bossFight = true;
+        boss.health += bossHealthChange;
+
+        //First choice
+        playerMovement.maxJumps = playerJumps;
+        boss.doubleJump = bossDouble;
+
+        FindObjectOfType<Weapon>().rocket = bossDouble;
+        FindObjectOfType<Weapon>().rocket = !bossDouble;
+
+        //Third choice
+        if (speed)
+        {
+            playerMovement.IncreaseMovementSpeed(3);
+        }
+        else
+        {
+            boss.IncreaseMovementSpeed(3);
+        }
+
+        playerMovement.jetPack = !speed;
+        boss.jetPack = speed;
     }
 
     public void DoubleJump(bool chosen)
@@ -97,6 +137,8 @@ public class GameController : MonoBehaviour
 
     public void RunFaster(bool chosen)
     {
+        speed = chosen;
+
         if (chosen)
             playerMovement.IncreaseMovementSpeed(3);
 
@@ -136,11 +178,6 @@ public class GameController : MonoBehaviour
                 yield return null;
             }
         }
-    }
-
-    public void EnterBossFight()
-    {
-        bossFight = true;
     }
 
     public void DieInBoss()
@@ -251,5 +288,17 @@ public class GameController : MonoBehaviour
         paused = false;
         Debug.Log("Choice made");
         chestNumber++;
+    }
+
+    public void RegretThat()
+    {
+        regretThat.SetActive(true);
+        StartCoroutine(RegretTimer(4));
+    }
+
+    private IEnumerator RegretTimer(int seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        regretThat.SetActive(false);
     }
 }

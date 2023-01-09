@@ -12,6 +12,8 @@ public class FadeToBlack : MonoBehaviour
     private int fadeSpeed;
     [SerializeField]
     private string newScene;
+    [SerializeField]
+    private bool isBossBattle;
 
     private GameController gameController;
 
@@ -27,6 +29,11 @@ public class FadeToBlack : MonoBehaviour
         {
             if (!fade)
             {
+                if (isBossBattle)
+                {
+                    gameController.StartBossFight();
+                    return;
+                }
                 SceneManager.LoadScene(newScene);
                 return;
             }
