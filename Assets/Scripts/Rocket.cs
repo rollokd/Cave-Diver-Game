@@ -10,12 +10,14 @@ public class Rocket : MonoBehaviour
     public float speed = 15f;
     private Rigidbody2D rb;
     public GameObject rocketExplosion;
+    public AudioSource rocketSound;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * speed;
+        rocketSound.Play();
     }
 
     void OnTriggerEnter2D(Collider2D hitInfo)

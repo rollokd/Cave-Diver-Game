@@ -10,12 +10,14 @@ public class Bullet : MonoBehaviour
     public float speed = 20f;
     private Rigidbody2D rb;
     public GameObject impactEffect;
+    private AudioSource bulletSound;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * speed;
+        bulletSound.Play();
     }
 
     void OnTriggerEnter2D(Collider2D hitInfo)
