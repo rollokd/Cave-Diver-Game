@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 110883255664800602}
   - component: {fileID: 6405887767557458449}
   - component: {fileID: -6390421553863198927}
-  - component: {fileID: -5659981917979016060}
+  - component: {fileID: -7114232089913477633}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -140,7 +140,9 @@ MonoBehaviour:
   isBoss: 0
   speed: 20
   impactEffect: {fileID: 3848042923516236347, guid: 1a0ca174020bc401ab631f83c1e78adc, type: 3}
---- !u!82 &-5659981917979016060
+  bulletSound: {fileID: 8300000, guid: cafdae85f44154b4aa2ccf3d1008232a, type: 3}
+  impactSound: {fileID: 8300000, guid: 75adfe9a619833445a701305b983e548, type: 3}
+--- !u!82 &-7114232089913477633
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,7 +152,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: cafdae85f44154b4aa2ccf3d1008232a, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

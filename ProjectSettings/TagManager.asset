@@ -57,11 +57,11 @@ TagManager:
   - name: Water FD
     uniqueID: 3679758699
     locked: 0
-  - name: Terrain
-    uniqueID: 3464523559
-    locked: 0
   - name: Water Terrain
     uniqueID: 3783130371
+    locked: 0
+  - name: Terrain
+    uniqueID: 3464523559
     locked: 0
   - name: Default
     uniqueID: 0

@@ -10,14 +10,17 @@ public class Rocket : MonoBehaviour
     public float speed = 15f;
     private Rigidbody2D rb;
     public GameObject rocketExplosion;
-    public AudioSource rocketSound;
+    private AudioSource sounds;
+    public AudioClip rocketSound;
+    public AudioClip impactSound;
 
     // Start is called before the first frame update
     void Start()
     {
+        sounds = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * speed;
-        rocketSound.Play();
+        sounds.PlayOneShot(rocketSound, 1F);
     }
 
     void OnTriggerEnter2D(Collider2D hitInfo)
@@ -32,14 +35,16 @@ public class Rocket : MonoBehaviour
             {
                 player.Hit();
                 player.Hit();
-                Instantiate(rocketExplosion, transform.position, transform.rotation);
-                Destroy(gameObject);
+                // Instantiate(rocketExplosion, transform.position, transform.rotation);
+                // Destroy(gameObject);
+                Impact();
             }
 
             if (hitInfo.gameObject.layer == 3) //3 is ground
             {
-                Instantiate(rocketExplosion, transform.position, transform.rotation);
-                Destroy(gameObject);
+                // Instantiate(rocketExplosion, transform.position, transform.rotation);
+                // Destroy(gameObject);
+                Impact();
             }
 
             return;
@@ -53,6 +58,7 @@ public class Rocket : MonoBehaviour
                 bossInteraction.Teleport();
                 bossInteraction.Hit();
                 bossInteraction.Hit();
+                Impact();
             }
         }
 
@@ -61,20 +67,29 @@ public class Rocket : MonoBehaviour
         {
             character.Hit();
             character.Hit();
-            Instantiate(rocketExplosion, transform.position, transform.rotation);
-            Destroy(gameObject);
+            // Instantiate(rocketExplosion, transform.position, transform.rotation);
+            // Destroy(gameObject);
+            Impact();
         }
 
         if(hitInfo.gameObject.tag == "RocketDoor"){
-            Instantiate(rocketExplosion, transform.position, transform.rotation);
+            // Instantiate(rocketExplosion, transform.position, transform.rotation);
             Destroy(hitInfo.gameObject);
-            Destroy(gameObject);
+            // Destroy(gameObject);
+            Impact();
         }
 
         if (hitInfo.gameObject.layer == 3 || hitInfo.gameObject.tag == "Chest") //3 is ground
         {
-            Instantiate(rocketExplosion, transform.position, transform.rotation);
-            Destroy(gameObject);
+            // Instantiate(rocketExplosion, transform.position, transform.rotation);
+            // Destroy(gameObject);
+            Impact();
         }
+    }
+
+    void Impact(){
+        AudioSource.PlayClipAtPoint(impactSound, gameObject.transform.position, 0.5F);
+        Instantiate(rocketExplosion, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }
