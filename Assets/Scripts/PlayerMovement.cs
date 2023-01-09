@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private int jumps;
     private bool canUseJetPack = true;
     private Rigidbody2D rb;
+    private AudioSource footsteps;
     
     private bool facingRight = true;
 
@@ -37,12 +38,15 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        footsteps = GetComponent<AudioSource>();
         fuel = maxFuel;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(footsteps.isPlaying);
+
         float horizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(horizontal * movementSpeed, rb.velocity.y);
 
@@ -53,10 +57,20 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("Sideways", Mathf.Abs(rb.velocity.x) > 0 && !animator.GetBool("Jump"));
         
         isGrounded = Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, maxDistance, layerMask);
+
         if (isGrounded)
         {
             animator.SetBool("Jump", false);
             jumps = 0;
+        }
+
+        if (Mathf.Abs(horizontal) > 0.01f && isGrounded)
+        {
+            footsteps.Play();
+        }
+        else
+        {
+            footsteps.Pause();
         }
 
         if (fuel > 9)
