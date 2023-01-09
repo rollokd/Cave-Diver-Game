@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public int bossHealthChange = 20;
+    public int bossHealthChange = 0;
     public bool bossFight = false;
     public bool paused = false;
 
     [SerializeField]
-    private int damageAmountToBoss;
+    private int damageAmountToBoss = 5;
     [SerializeField]
     private Player player;
     [SerializeField]
