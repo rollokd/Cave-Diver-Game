@@ -40887,7 +40887,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.0590973, y: 4.1274796}
+  m_Size: {x: 1.2, y: 4.1274796}
   m_EdgeRadius: 0
 --- !u!114 &1697842132
 MonoBehaviour:
@@ -40904,6 +40904,7 @@ MonoBehaviour:
   fade: 0
   fadeSpeed: 1
   newScene: Tutorial Cutscene
+  isBossBattle: 0
 --- !u!1 &1712117486
 GameObject:
   m_ObjectHideFlags: 0
