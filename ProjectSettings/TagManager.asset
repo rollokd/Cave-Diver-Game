@@ -43,11 +43,11 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 238892869
-    locked: 0
   - name: Water BG
     uniqueID: 351279295
+    locked: 0
+  - name: Background
+    uniqueID: 238892869
     locked: 0
   - name: Floor detail
     uniqueID: 2250774739
