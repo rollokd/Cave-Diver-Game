@@ -66,11 +66,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (Mathf.Abs(horizontal) > 0.01f && isGrounded)
         {
-            footsteps.Play();
+            if (!footsteps.isPlaying)
+                footsteps.Play();
         }
         else
         {
-            footsteps.Pause();
+            if (footsteps.isPlaying)
+                footsteps.Pause();
         }
 
         if (fuel > 9)
