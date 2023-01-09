@@ -25,7 +25,6 @@ public class Boss : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Boss craeted");
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         gameController = FindObjectOfType<GameController>();
@@ -49,7 +48,16 @@ public class Boss : Enemy
                 Move(-1, 3.6f);
                 yield return new WaitForSeconds(2.2f * 3 / movementSpeed);
                 Jump();
-                yield return new WaitForSeconds(2 * 3 / movementSpeed);
+                if (jetPack)
+                {
+                    yield return new WaitForSeconds(1 * 3 / movementSpeed);
+                    StartCoroutine(JetPack(1 * 3 / movementSpeed));
+                    yield return new WaitForSeconds(1 * 3 / movementSpeed);
+                }
+                else
+                {
+                    yield return new WaitForSeconds(2 * 3 / movementSpeed);
+                }
 
                 //Second block
                 Flip();
@@ -58,14 +66,32 @@ public class Boss : Enemy
                 Jump();
                 yield return new WaitForSeconds(1 * 3 / movementSpeed);
                 Jump();
-                yield return new WaitForSeconds(3 * 3 / movementSpeed);
+                if (jetPack)
+                {
+                    yield return new WaitForSeconds(1 * 3 / movementSpeed);
+                    StartCoroutine(JetPack(1 * 3 / movementSpeed));
+                    yield return new WaitForSeconds(2 * 3 / movementSpeed);
+                }
+                else
+                {
+                    yield return new WaitForSeconds(3 * 3 / movementSpeed);
+                }
 
                 //Back down
                 Flip();
                 Move(-1, 3.4f);
                 yield return new WaitForSeconds(2.2f * 3 / movementSpeed);
                 Jump();
-                yield return new WaitForSeconds(4 * 3 / movementSpeed);
+                if (jetPack)
+                {
+                    yield return new WaitForSeconds(1 * 3 / movementSpeed);
+                    StartCoroutine(JetPack(1 * 3 / movementSpeed));
+                    yield return new WaitForSeconds(3 * 3 / movementSpeed);
+                }
+                else
+                {
+                    yield return new WaitForSeconds(4 * 3 / movementSpeed);
+                }
 
                 //Jump up left
                 Jump();
@@ -87,14 +113,32 @@ public class Boss : Enemy
                 Move(-1, 3.6f);
                 yield return new WaitForSeconds(2.2f * 3 / movementSpeed);
                 Jump();
-                yield return new WaitForSeconds(3 * 3 / movementSpeed);
+                if (jetPack)
+                {
+                    yield return new WaitForSeconds(1 * 3 / movementSpeed);
+                    StartCoroutine(JetPack(1 * 3 / movementSpeed));
+                    yield return new WaitForSeconds(2 * 3 / movementSpeed);
+                }
+                else
+                {
+                    yield return new WaitForSeconds(3 * 3 / movementSpeed);
+                }
 
                 //Back
                 Flip();
                 Move(1, 5.8f);
                 yield return new WaitForSeconds(3.2f * 3 / movementSpeed);
                 Jump();
-                yield return new WaitForSeconds(3 * 3 / movementSpeed);
+                if (jetPack)
+                {
+                    yield return new WaitForSeconds(1 * 3 / movementSpeed);
+                    StartCoroutine(JetPack(1 * 3 / movementSpeed));
+                    yield return new WaitForSeconds(2 * 3 / movementSpeed);
+                }
+                else
+                {
+                    yield return new WaitForSeconds(3 * 3 / movementSpeed);
+                }
 
                 //Back left
                 Flip();
@@ -137,6 +181,17 @@ public class Boss : Enemy
     {
         yield return new WaitForSeconds(time);
         horizontal = 0;
+    }
+
+    private IEnumerator JetPack(float time)
+    {
+        float timePassed = 0;
+        while(timePassed < time)
+        {
+            timePassed += Time.deltaTime;
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+            yield return null;
+        }
     }
 
     public override void Die()
