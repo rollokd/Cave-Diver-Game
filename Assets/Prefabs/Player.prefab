@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jetPack: 0
+  maxJumps: 0
   boxSize: {x: 0.5, y: 0.5, z: 1}
   maxDistance: 1.1
   layerMask:
@@ -144,7 +145,6 @@ MonoBehaviour:
   jumpSpeed: 9
   fuelCost: 100
   fuelRegen: 10
-  maxJumps: 0
 --- !u!50 &8583886961185821643
 Rigidbody2D:
   serializedVersion: 4
@@ -235,8 +235,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alive: 1
-  maxHealth: 3
   health: 3
+  maxHealth: 3
   healthbar: {fileID: 0}
 --- !u!114 &7784987219539870781
 MonoBehaviour:
@@ -253,3 +253,4 @@ MonoBehaviour:
   rocket: 0
   firePoint: {fileID: 2997673211159996971}
   bulletPrefab: {fileID: 1251167273829517273, guid: 78fc9973ca6404d0787219268dd29240, type: 3}
+  rocketPrefab: {fileID: 6930678493515587643, guid: b36b5f657b13746e586dfd6b41974dd3, type: 3}
