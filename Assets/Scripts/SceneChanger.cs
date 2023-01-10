@@ -16,7 +16,7 @@ public class SceneChanger : MonoBehaviour
         time -= Time.deltaTime;
         if (time <= 0)
         {
-            if (sceneToChangeTo == "Menu")
+            if (sceneToChangeTo == "Menu" || sceneToChangeTo == "Tutorial")
                 Destroy(FindObjectOfType<GameController>());
             
             SceneManager.LoadScene(sceneToChangeTo);

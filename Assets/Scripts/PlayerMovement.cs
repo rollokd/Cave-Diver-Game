@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private bool canUseJetPack = true;
     private Rigidbody2D rb;
     private AudioSource footsteps;
+    private GameController gameController;
     
     private bool facingRight = true;
 
@@ -39,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         footsteps = GetComponent<AudioSource>();
+        gameController = FindObjectOfType<GameController>();
         fuel = maxFuel;
     }
 
@@ -47,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log(footsteps.isPlaying);
 
-        if (gameController.paused)
+        if (gameController != null && gameController.paused)
             return;
 
         float horizontal = Input.GetAxis("Horizontal");
