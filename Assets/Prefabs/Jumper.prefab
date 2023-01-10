@@ -214,7 +214,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855320122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -223,10 +223,10 @@ RectTransform:
   m_Father: {fileID: 968368542}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 10}
+  m_AnchorMin: {x: 0.652, y: 0.5195599}
+  m_AnchorMax: {x: 0.70400006, y: 0.555}
+  m_AnchoredPosition: {x: -0.6217346, y: -3.239479}
+  m_SizeDelta: {x: -3, y: -4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &855320124
 MonoBehaviour:
@@ -499,10 +499,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alive: 1
-  healthMultiplier: 0
-  damageMultiplier: 0
-  maxHealth: 3
   health: 3
+  maxHealth: 3
   healthbar: {fileID: 968368543}
   verticalSpeed: 3
   maxVertical: 2
