@@ -15,6 +15,7 @@ public class Menu : MonoBehaviour
 
     public void Play()
     {
+        Destroy(FindObjectOfType<GameController>());
         SceneManager.LoadScene("Tutorial");
     }
 }
