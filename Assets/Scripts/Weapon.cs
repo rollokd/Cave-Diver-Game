@@ -10,10 +10,16 @@ public class Weapon : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject rocketPrefab;
 
+    [SerializeField]
+    private GameController gameController;
+
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire1")){
+        if (gameController != null && gameController.paused)
+            return;
+
+        if (Input.GetButtonDown("Fire1")){
             Shoot();
         }
         if(rocket && Input.GetButtonDown("Fire2")){

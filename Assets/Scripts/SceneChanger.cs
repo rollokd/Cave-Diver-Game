@@ -15,6 +15,11 @@ public class SceneChanger : MonoBehaviour
     {
         time -= Time.deltaTime;
         if (time <= 0)
+        {
+            if (sceneToChangeTo == "Menu")
+                Destroy(FindObjectOfType<GameController>());
+            
             SceneManager.LoadScene(sceneToChangeTo);
+        }
     }
 }

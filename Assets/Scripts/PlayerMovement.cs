@@ -47,6 +47,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log(footsteps.isPlaying);
 
+        if (gameController.paused)
+            return;
+
         float horizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(horizontal * movementSpeed, rb.velocity.y);
 

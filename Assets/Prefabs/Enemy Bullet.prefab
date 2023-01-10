@@ -139,3 +139,5 @@ MonoBehaviour:
   isBoss: 1
   speed: 20
   impactEffect: {fileID: 3848042923516236347, guid: 1a0ca174020bc401ab631f83c1e78adc, type: 3}
+  bulletSound: {fileID: 8300000, guid: cafdae85f44154b4aa2ccf3d1008232a, type: 3}
+  impactSound: {fileID: 8300000, guid: 75adfe9a619833445a701305b983e548, type: 3}

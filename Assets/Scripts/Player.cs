@@ -17,7 +17,8 @@ public class Player : Character
     public override void Die()
     {
         Debug.Log("Character die");
-        if (!gameController.bossFight)
+
+        if (gameController == null || !gameController.bossFight)
         {
             SceneManager.LoadScene("Death Screen");
         }
