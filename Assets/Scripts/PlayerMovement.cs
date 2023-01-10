@@ -47,8 +47,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(footsteps.isPlaying);
-
         if (gameController != null && gameController.paused)
             return;
 
@@ -59,15 +57,16 @@ public class PlayerMovement : MonoBehaviour
             Flip();
         }
 
-        animator.SetBool("Sideways", Mathf.Abs(rb.velocity.x) > 0 && !animator.GetBool("Jump"));
         
-        isGrounded = Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, maxDistance, layerMask);
+        isGrounded = Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, maxDistance, layerMask) && Mathf.Abs(rb.velocity.y) < 0.01f;
 
-        if (isGrounded)
+        if (isGrounded )
         {
             animator.SetBool("Jump", false);
             jumps = 0;
         }
+        
+        animator.SetBool("Sideways", Mathf.Abs(rb.velocity.x) > 0 && !animator.GetBool("Jump"));
 
         if (Mathf.Abs(horizontal) > 0.01f && isGrounded)
         {
@@ -83,10 +82,10 @@ public class PlayerMovement : MonoBehaviour
         if (fuel > 9)
             canUseJetPack = true;
 
-        if (Input.GetButtonDown("Jump") && (isGrounded || jumps < maxJumps))
+        if (Input.GetButtonDown("Jump") && (isGrounded || jumps <= maxJumps))
         {
-            rb.velocity = new Vector2(rb.velocity.x, 0) + Vector2.up * jumpSpeed;
             jumps++;
+            rb.velocity = new Vector2(rb.velocity.x, 0) + Vector2.up * jumpSpeed;
             animator.SetBool("Jump", true);
         }
         else if (Input.GetButton("Jump") && jetPack && (fuel - (fuelCost * Time.deltaTime) > 0) && rb.velocity.y < -0.01f && canUseJetPack)
