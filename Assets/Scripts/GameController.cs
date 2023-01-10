@@ -34,6 +34,8 @@ public class GameController : MonoBehaviour
     private GameObject chestObject3;
     [SerializeField]
     private GameObject regretThat;
+    [SerializeField]
+    private GameObject thanksSpeech;
 
 
     private Boss boss;
@@ -292,6 +294,7 @@ public class GameController : MonoBehaviour
 
     public void RegretThat()
     {
+        thanksSpeech.SetActive(false);
         regretThat.SetActive(true);
         StartCoroutine(RegretTimer(4));
     }
