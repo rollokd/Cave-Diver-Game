@@ -6,36 +6,30 @@ public class Weapon : MonoBehaviour
 {
     public bool rocket;
 
-    public Transform firePoint;
-    public GameObject bulletPrefab;
-    public GameObject rocketPrefab;
+    [SerializeField]
+    private Transform firePoint;
+    [SerializeField]
+    private GameObject bulletPrefab;
+    [SerializeField]
+    private GameObject rocketPrefab;
 
     [SerializeField]
     private GameController gameController;
 
-    // Update is called once per frame
     void Update()
     {
         if (gameController != null && gameController.paused)
             return;
 
-        if (Input.GetButtonDown("Fire1")){
-            Shoot();
-        }
-        if(rocket && Input.GetButtonDown("Fire2")){
-            ShootRocket();
-        }
+        if (Input.GetButtonDown("Fire1"))
+            Shoot(bulletPrefab);
+        
+        if(rocket && Input.GetButtonDown("Fire2"))
+            Shoot(rocketPrefab);
     }
 
-    void Shoot()
+    private void Shoot(GameObject bullet)
     {
-        //shooting logic
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-    }
-    
-    void ShootRocket()
-    {
-        //shooting logic
-        Instantiate(rocketPrefab, firePoint.position, firePoint.rotation);
+        Instantiate(bullet, firePoint.position, firePoint.rotation);
     }
 }

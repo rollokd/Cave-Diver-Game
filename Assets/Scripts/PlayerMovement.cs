@@ -31,36 +31,35 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private AudioSource footsteps;
     private GameController gameController;
+    private Player player;
     
-    private bool facingRight = true;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         footsteps = GetComponent<AudioSource>();
         gameController = FindObjectOfType<GameController>();
+        player = GetComponent<Player>();
         fuel = maxFuel;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (gameController != null && gameController.paused)
             return;
 
+        //Horizontal Movement
         float horizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(horizontal * movementSpeed, rb.velocity.y);
 
-        if((horizontal > 0 && !facingRight) || (horizontal < 0 && facingRight)){
-            Flip();
-        }
+        if((horizontal > 0 && player.facingRight) || (horizontal < 0 && !player.facingRight))
+            player.Flip();
 
-        
+        //Grounded
         isGrounded = Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, maxDistance, layerMask) && Mathf.Abs(rb.velocity.y) < 0.01f;
 
-        if (isGrounded )
+        if (isGrounded)
         {
             animator.SetBool("Jump", false);
             jumps = 0;
@@ -68,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
         
         animator.SetBool("Sideways", Mathf.Abs(rb.velocity.x) > 0 && !animator.GetBool("Jump"));
 
+        //Footsteps audio
         if (Mathf.Abs(horizontal) > 0.01f && isGrounded)
         {
             if (!footsteps.isPlaying)
@@ -79,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
                 footsteps.Pause();
         }
 
+        //Fuel and jumping
         if (fuel > 9)
             canUseJetPack = true;
 
@@ -122,11 +123,4 @@ public class PlayerMovement : MonoBehaviour
     //    Gizmos.color = Color.red;
     //    Gizmos.DrawCube(transform.position - transform.up * maxDistance, boxSize);
     //}
-
-    public void Flip()
-    {
-        facingRight = !facingRight;
-
-        transform.Rotate(0f,180f,0f);
-    }
 }

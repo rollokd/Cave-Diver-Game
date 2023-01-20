@@ -6,6 +6,7 @@ public class Character : MonoBehaviour
 {
     public bool alive = true;
     public int health;
+    public bool facingRight = false;
 
     [SerializeField]
     protected int maxHealth;
@@ -14,14 +15,11 @@ public class Character : MonoBehaviour
 
     public void Hit()
     {
-        Debug.Log("Hit");
         health--;
         healthbar.SetHealth(health, maxHealth);
         
         if (health <= 0)
-        {
             Die();
-        }
     }
 
     public void Heal()
@@ -37,5 +35,11 @@ public class Character : MonoBehaviour
         Debug.Log("Die");
         alive = false;
         Destroy(gameObject);
+    }
+
+    public void Flip()
+    {
+        facingRight = !facingRight;
+        transform.Rotate(0f, 180f, 0f);
     }
 }

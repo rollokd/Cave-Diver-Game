@@ -5,26 +5,29 @@ using UnityEngine.UI;
 
 public class Healthbar : MonoBehaviour
 {
-    public bool enemy = true;
     public Slider slider;
-    public Vector3 offset;
-    public Color low;
-    public Color high;
 
-    private Camera camera;
+    [SerializeField]
+    private bool enemy = true;
+    [SerializeField]
+    private Vector3 offset;
+    [SerializeField]
+    private Color low;
+    [SerializeField]
+    private Color high;
+
+    private Camera mainCamera;
     // Start is called before the first frame update
     void Start()
     {
-        camera = Camera.main;
+        mainCamera = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (enemy)
-        {
-            slider.transform.position = camera.WorldToScreenPoint(transform.parent.position + offset);
-        }
+            slider.transform.position = mainCamera.WorldToScreenPoint(transform.parent.position + offset);
     }
 
     public void SetHealth(float health, float maxHealth)

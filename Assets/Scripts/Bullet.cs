@@ -6,48 +6,40 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField]
     private bool isBoss = false;
+    [SerializeField]
+    private float speed = 20f;
+    [SerializeField]
+    private GameObject impactEffect;
+    [SerializeField]
+    private AudioClip bulletSound;
+    [SerializeField]
+    private AudioClip impactSound;
 
-    public float speed = 20f;
     private Rigidbody2D rb;
-    public GameObject impactEffect;
     private AudioSource sounds;
-    public AudioClip bulletSound;
-    public AudioClip impactSound;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * speed;
         sounds = GetComponent<AudioSource>();
-        // bulletSound = sounds[0];
-        // impactSound = sounds[1];
-        // bulletSound.Play();
         sounds.PlayOneShot(bulletSound, 1F);
     }
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-
-        //Debug.Log("Bullet hit " + hitInfo.name);
+        //If boss is shooting
         if (isBoss)
         {
             Player player = hitInfo.GetComponent<Player>();
             if (player != null)
             {
                 player.Hit();
-                // Instantiate(impactEffect, transform.position, transform.rotation);
-                // Destroy(gameObject);
                 Impact();
             }
 
             if (hitInfo.gameObject.layer == 3) //3 is ground
-            {
-                // Instantiate(impactEffect, transform.position, transform.rotation);
-                // Destroy(gameObject);
                 Impact();
-            }
 
             return;
         }
@@ -66,20 +58,15 @@ public class Bullet : MonoBehaviour
         if (character != null)
         {
             character.Hit();
-            // Instantiate(impactEffect, transform.position, transform.rotation);
-            // Destroy(gameObject);
             Impact();
         }
 
         if (hitInfo.gameObject.layer == 3 || hitInfo.gameObject.tag == "Chest") //3 is ground
-        {
-            // Instantiate(impactEffect, transform.position, transform.rotation);
-            // Destroy(gameObject);
             Impact();
-        }
     }
 
-    void Impact(){
+    private void Impact()
+    {
         AudioSource.PlayClipAtPoint(impactSound, gameObject.transform.position, 1F);
         Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(gameObject);

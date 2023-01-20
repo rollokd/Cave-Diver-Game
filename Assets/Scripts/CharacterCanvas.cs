@@ -9,15 +9,15 @@ public class CharacterCanvas : MonoBehaviour
     [SerializeField]
     private GameObject speech;
 
-    private Camera camera;
-    // Start is called before the first frame update
+    private Camera mainCamera;
+
     void Start()
     {
-        camera = Camera.main;
+        mainCamera = Camera.main;
     }
-    // Update is called once per frame
+
     void Update()
     {
-        speech.transform.position = camera.WorldToScreenPoint(transform.parent.position + offset);
+        speech.transform.position = mainCamera.WorldToScreenPoint(transform.parent.position + offset);
     }
 }

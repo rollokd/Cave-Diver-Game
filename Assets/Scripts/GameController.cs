@@ -67,10 +67,8 @@ public class GameController : MonoBehaviour
 
     public void HitBossInGame()
     {
-        Debug.Log(feelings + " feelings and " + bossHealthChange + " health");
         bossHealthChange -= damageAmountToBoss;
         feelings--;
-        Debug.Log(feelings + " feelings and " + bossHealthChange + " health");
     }
 
     public void StartBossFight()
@@ -102,6 +100,8 @@ public class GameController : MonoBehaviour
 
         player.GetComponent<Weapon>().rocket = bossDouble;
         boss.GetComponent<BossWeapon>().rocket = !bossDouble;
+
+        //Second choice doesn't effect boss fight
 
         //Third choice
         if (speed)

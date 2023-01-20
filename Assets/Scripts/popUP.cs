@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class popUP : MonoBehaviour
+public class PopUP : MonoBehaviour
 {
-    public GameObject popUp;
+    [SerializeField]
+    private GameObject popUp;
 
     private void OnTriggerEnter2D(Collider2D other)
     {

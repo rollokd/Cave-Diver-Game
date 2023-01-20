@@ -6,15 +6,18 @@ public class Rocket : MonoBehaviour
 {
     [SerializeField]
     private bool isBoss = false;
+    [SerializeField]
+    private float speed = 15f;
+    [SerializeField]
+    private GameObject rocketExplosion;
+    [SerializeField]
+    private AudioClip rocketSound;
+    [SerializeField]
+    private AudioClip impactSound;
 
-    public float speed = 15f;
     private Rigidbody2D rb;
-    public GameObject rocketExplosion;
     private AudioSource sounds;
-    public AudioClip rocketSound;
-    public AudioClip impactSound;
 
-    // Start is called before the first frame update
     void Start()
     {
         sounds = GetComponent<AudioSource>();
@@ -25,9 +28,7 @@ public class Rocket : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-
-        // Destroy(gameObject);
-        Debug.Log("Bullet hit " + hitInfo.name);
+        //If boss is shooting rocket
         if (isBoss)
         {
             Player player = hitInfo.GetComponent<Player>();
@@ -35,17 +36,11 @@ public class Rocket : MonoBehaviour
             {
                 player.Hit();
                 player.Hit();
-                // Instantiate(rocketExplosion, transform.position, transform.rotation);
-                // Destroy(gameObject);
                 Impact();
             }
 
             if (hitInfo.gameObject.layer == 3) //3 is ground
-            {
-                // Instantiate(rocketExplosion, transform.position, transform.rotation);
-                // Destroy(gameObject);
                 Impact();
-            }
 
             return;
         }
@@ -67,27 +62,21 @@ public class Rocket : MonoBehaviour
         {
             character.Hit();
             character.Hit();
-            // Instantiate(rocketExplosion, transform.position, transform.rotation);
-            // Destroy(gameObject);
             Impact();
         }
 
-        if(hitInfo.gameObject.tag == "RocketDoor"){
-            // Instantiate(rocketExplosion, transform.position, transform.rotation);
-            Destroy(hitInfo.gameObject);
-            // Destroy(gameObject);
-            Impact();
-        }
-
-        if (hitInfo.gameObject.layer == 3 || hitInfo.gameObject.tag == "Chest") //3 is ground
+        if(hitInfo.gameObject.tag == "RocketDoor")
         {
-            // Instantiate(rocketExplosion, transform.position, transform.rotation);
-            // Destroy(gameObject);
+            Destroy(hitInfo.gameObject);
             Impact();
         }
+
+        if (hitInfo.gameObject.layer == 3 || hitInfo.gameObject.tag == "Chest") // 3 is ground
+            Impact();
     }
 
-    void Impact(){
+    private void Impact()
+    {
         AudioSource.PlayClipAtPoint(impactSound, gameObject.transform.position, 0.5F);
         Instantiate(rocketExplosion, transform.position, transform.rotation);
         Destroy(gameObject);

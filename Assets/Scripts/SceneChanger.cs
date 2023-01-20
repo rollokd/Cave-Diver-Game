@@ -10,7 +10,6 @@ public class SceneChanger : MonoBehaviour
     [SerializeField]
     private float time;
 
-    // Update is called once per frame
     void Update()
     {
         time -= Time.deltaTime;

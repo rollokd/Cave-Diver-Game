@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crab : Enemy
+public class Crab : Character
 {
     [SerializeField]
     private float horizontalSpeed;
@@ -31,17 +31,5 @@ public class Crab : Enemy
         prevsin = sin;
 
         transform.position = new Vector2(horiz, transform.position.y);
-    }
-
-    public new void Die()
-    {
-        Debug.Log("Enemy die");
-        Destroy(gameObject);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Bullet")
-            Hit();
     }
 }

@@ -877,8 +877,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf77102e8f68fb4598d403623f175c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: 0
   slider: {fileID: 1656278120}
+  enemy: 0
   offset: {x: 0, y: 0, z: 0}
   low: {r: 1, g: 0, b: 0, a: 1}
   high: {r: 0, g: 1, b: 0, a: 1}

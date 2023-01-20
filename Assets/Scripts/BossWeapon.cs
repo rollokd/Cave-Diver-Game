@@ -26,9 +26,8 @@ public class BossWeapon : MonoBehaviour
     public void SetRocket(bool boolean)
     {
         if (boolean)
-        {
             bulletPrefab = rocketPrefab;
-        }
+        
         rocket = boolean;
     }
 
@@ -57,7 +56,6 @@ public class BossWeapon : MonoBehaviour
 
     void Shoot()
     {
-        //shooting logic
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     }
 }

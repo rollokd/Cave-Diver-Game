@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss : Enemy
+public class Boss : Character
 {
     public bool doubleJump;
     public bool jetPack;
@@ -22,7 +22,6 @@ public class Boss : Enemy
     private Animator animator;
     private GameController gameController;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -31,7 +30,6 @@ public class Boss : Enemy
         StartCoroutine(StartFight());
     }
 
-    // Update is called once per frame
     void Update()
     {
         rb.velocity = new Vector2(horizontal * movementSpeed, rb.velocity.y);
