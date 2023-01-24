@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Jumper : Character
@@ -10,7 +8,7 @@ public class Jumper : Character
     private float maxVertical;
 
     private float initialVertical;
-    private float timer = 0;
+    private float timer;
 
     private void Start()
     {

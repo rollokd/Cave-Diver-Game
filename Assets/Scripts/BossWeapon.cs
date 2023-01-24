@@ -1,17 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossWeapon : MonoBehaviour
 {
+    [HideInInspector]
     public bool rocket;
 
     [SerializeField]
     private Transform firePoint;
+
+    [Header("Bullets")]
     [SerializeField]
     private GameObject bulletPrefab;
     [SerializeField]
     private GameObject rocketPrefab;
+
+    [Header("Burst")]
     [SerializeField]
     private float burstDelay;
     [SerializeField]
@@ -22,14 +25,6 @@ public class BossWeapon : MonoBehaviour
     private float burstTimer;
     private float subBurstTimer;
     private int shots;
-
-    public void SetRocket(bool boolean)
-    {
-        if (boolean)
-            bulletPrefab = rocketPrefab;
-        
-        rocket = boolean;
-    }
 
     void Update()
     { 
@@ -54,7 +49,15 @@ public class BossWeapon : MonoBehaviour
         }
     }
 
-    void Shoot()
+    public void SetRocket(bool boolean)
+    {
+        if (boolean)
+            bulletPrefab = rocketPrefab;
+        
+        rocket = boolean;
+    }
+
+    private void Shoot()
     {
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     }

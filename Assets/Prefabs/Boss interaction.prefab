@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fades: 10
   fadeSpeed: 5
+  sprite: {fileID: 6566363850782575887}
 --- !u!61 &6566363850782575875
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -1,20 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FriendMovement : Character
 {
+    [Header("Friend")]
     [SerializeField]
     private PlayerMovement player;
-
+    [SerializeField]
     private Animator animator;
+    [SerializeField]
     private Rigidbody2D playerRb;
-
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
-        playerRb = player.GetComponent<Rigidbody2D>();
-    }
 
     void Update()
     {

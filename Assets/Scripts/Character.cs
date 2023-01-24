@@ -1,17 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    [HideInInspector]
     public bool alive = true;
+    [HideInInspector]
     public int health;
+    [HideInInspector]
     public bool facingRight = false;
 
     [SerializeField]
-    protected int maxHealth;
-    [SerializeField]
     protected Healthbar healthbar;
+    [SerializeField]
+    protected int maxHealth;
 
     public void Hit()
     {
@@ -22,7 +23,13 @@ public class Character : MonoBehaviour
             Die();
     }
 
-    public void Heal()
+    public void Flip()
+    {
+        facingRight = !facingRight;
+        transform.Rotate(0f, 180f, 0f);
+    }
+
+    protected void Heal()
     {
         health++;
         if (health > maxHealth)
@@ -30,16 +37,10 @@ public class Character : MonoBehaviour
         healthbar.SetHealth(health, maxHealth);
     }
 
-    public virtual void Die()
+    protected virtual void Die()
     {
         Debug.Log("Die");
         alive = false;
         Destroy(gameObject);
-    }
-
-    public void Flip()
-    {
-        facingRight = !facingRight;
-        transform.Rotate(0f, 180f, 0f);
     }
 }

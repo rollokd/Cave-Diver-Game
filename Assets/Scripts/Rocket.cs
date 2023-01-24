@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Rocket : MonoBehaviour
@@ -14,14 +12,13 @@ public class Rocket : MonoBehaviour
     private AudioClip rocketSound;
     [SerializeField]
     private AudioClip impactSound;
-
+    [SerializeField]
     private Rigidbody2D rb;
+    [SerializeField]
     private AudioSource sounds;
 
     void Start()
     {
-        sounds = GetComponent<AudioSource>();
-        rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * speed;
         sounds.PlayOneShot(rocketSound, 1F);
     }
@@ -45,7 +42,7 @@ public class Rocket : MonoBehaviour
             return;
         }
 
-        if (hitInfo.gameObject.tag == "BossInteraction")
+        if (hitInfo.gameObject.CompareTag("BossInteraction"))
         {
             BossInteractionFade bossInteraction = hitInfo.GetComponent<BossInteractionFade>();
             if (bossInteraction != null)
@@ -65,13 +62,13 @@ public class Rocket : MonoBehaviour
             Impact();
         }
 
-        if(hitInfo.gameObject.tag == "RocketDoor")
+        if(hitInfo.gameObject.CompareTag("RocketDoor"))
         {
             Destroy(hitInfo.gameObject);
             Impact();
         }
 
-        if (hitInfo.gameObject.layer == 3 || hitInfo.gameObject.tag == "Chest") // 3 is ground
+        if (hitInfo.gameObject.layer == 3 || hitInfo.gameObject.CompareTag("Chest")) // 3 is ground
             Impact();
     }
 

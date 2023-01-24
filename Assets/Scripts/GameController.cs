@@ -6,18 +6,23 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public int bossHealthChange = 0;
-    public bool bossFight = false;
-    public bool paused = false;
+    [HideInInspector]
+    public int bossHealthChange;
+    [HideInInspector]
+    public bool bossFight;
+    [HideInInspector]
+    public bool paused;
 
     [SerializeField]
-    private int damageAmountToBoss = 5;
-    [SerializeField]
     private Player player;
+    [SerializeField]
+    private int damageAmountToBoss = 5;
     [SerializeField]
     private GameObject waterCollision;
     [SerializeField]
     private GameObject blackOutSquare;
+
+    [Header("Chests")]
     [SerializeField]
     private GameObject chest1;
     [SerializeField]
@@ -32,6 +37,8 @@ public class GameController : MonoBehaviour
     private GameObject chestObject2;
     [SerializeField]
     private GameObject chestObject3;
+
+    [Header("Speech")]
     [SerializeField]
     private GameObject regretThat;
     [SerializeField]
@@ -43,24 +50,26 @@ public class GameController : MonoBehaviour
     private int chestNumber = 1;
     private bool left;
     private bool right;
-    private bool bossDouble = false;
-    private int playerJumps = 0;
-    private bool rocket;
+    private bool bossDouble;
+    private int playerJumps;
     private int feelings = 1;
     private bool speed;
 
-    private void Start()
+    void Start()
     {
         DontDestroyOnLoad(this.gameObject);
         playerMovement = player.GetComponent<PlayerMovement>();
     }
 
-    private void Update()
+    void Update()
     {
-        if (Input.GetButtonDown("LeftChoice") && paused)
+        if (!paused)
+            return;
+
+        if (Input.GetButtonDown("LeftChoice"))
             left = true;
 
-        if (Input.GetButtonDown("RightChoice") && paused)
+        if (Input.GetButtonDown("RightChoice"))
             right = true;
 
     }
@@ -75,6 +84,7 @@ public class GameController : MonoBehaviour
     {
         StartCoroutine(LoadBossBattleScene());
     }
+
     private IEnumerator LoadBossBattleScene()
     {
         var asyncLoadLevel = SceneManager.LoadSceneAsync("Boss Battle", LoadSceneMode.Single);
@@ -99,7 +109,7 @@ public class GameController : MonoBehaviour
         boss.doubleJump = bossDouble;
 
         player.GetComponent<Weapon>().rocket = bossDouble;
-        boss.GetComponent<BossWeapon>().rocket = !bossDouble;
+        boss.GetComponent<BossWeapon>().SetRocket(!bossDouble);
 
         //Second choice doesn't effect boss fight
 
@@ -117,7 +127,7 @@ public class GameController : MonoBehaviour
         boss.jetPack = speed;
     }
 
-    public void DoubleJump(bool chosen)
+    private void DoubleJump(bool chosen)
     {
         bossDouble = !chosen;
 
@@ -127,17 +137,10 @@ public class GameController : MonoBehaviour
             playerJumps++;
         }
 
-        rocket = !chosen;
-
         FindObjectOfType<Weapon>().rocket = !chosen;
     }
 
-    public void WalkOnWater()
-    {
-        waterCollision.SetActive(true);
-    }
-
-    public void RunFaster(bool chosen)
+    private void RunFaster(bool chosen)
     {
         speed = chosen;
 
@@ -152,7 +155,7 @@ public class GameController : MonoBehaviour
         StartCoroutine(FadeBlackOutSquare(black, speed, newScene));
     }
 
-    public IEnumerator FadeBlackOutSquare(bool fadeToBlack, int fadeSpeed, string newScene = null)
+    private IEnumerator FadeBlackOutSquare(bool fadeToBlack, int fadeSpeed, string newScene = null)
     {
         Color objectColour = blackOutSquare.GetComponent<Image>().color;
         float fadeAmount;
@@ -186,11 +189,11 @@ public class GameController : MonoBehaviour
     {
         if (feelings >= 0)
         {
-            Spare();
+            SceneManager.LoadScene("Spare Player Cutscene");
         }
         else
         {
-            BossKills();
+            SceneManager.LoadScene("Kill Player Cutscene");
         }
     }
 
@@ -198,36 +201,12 @@ public class GameController : MonoBehaviour
     {
         if (feelings >= 0)
         {
-            SpareBoss();
+            SceneManager.LoadScene("Spare Boss Cutscene");
         }
         else
         {
-            FinishBoss();
+            SceneManager.LoadScene("Kill Boss Cutscene");
         }
-    }
-
-    private void SpareBoss()
-    {
-        Debug.Log("Spare the boss");
-        SceneManager.LoadScene("Spare Boss Cutscene");
-    }
-
-    private void FinishBoss()
-    {
-        Debug.Log("Finish the boss");
-        SceneManager.LoadScene("Kill Boss Cutscene");
-    }
-
-    private void Spare()
-    {
-        Debug.Log("Boss spares your life");
-        SceneManager.LoadScene("Spare Player Cutscene");
-    }
-
-    private void BossKills()
-    {
-        Debug.Log("Boss kills you");
-        SceneManager.LoadScene("Kill Player Cutscene");
     }
 
     public void Chest()
@@ -268,7 +247,7 @@ public class GameController : MonoBehaviour
         else if (chestNumber == 2)
         {
             if (left)
-                WalkOnWater();
+                waterCollision.SetActive(true);
 
             Destroy(chestObject2);
         }

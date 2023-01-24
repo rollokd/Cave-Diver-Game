@@ -1,31 +1,26 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Boss : Character
 {
+    [Header("Boss")]
     public bool doubleJump;
     public bool jetPack;
 
     [SerializeField]
-    private Vector3 boxSize;
-    [SerializeField]
-    private float maxDistance;
-    [SerializeField]
-    private LayerMask layerMask;
-    [SerializeField]
     private float movementSpeed = 3;
-
+    [SerializeField]
     private Rigidbody2D rb;
-    private float horizontal;
-    private float jumpSpeed = 9;
+    [SerializeField]
     private Animator animator;
+
+    private const float jumpSpeed = 9;
+
+    private float horizontal;
     private GameController gameController;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
         gameController = FindObjectOfType<GameController>();
         StartCoroutine(StartFight());
     }
@@ -146,19 +141,10 @@ public class Boss : Character
             }
         }
     }
-    public IEnumerator StartRandomFight()
+
+    public void IncreaseMovementSpeed(int amount)
     {
-        for (int i = 0; i < 100; i++)
-        {
-            Move(-1, Random.Range(0, 5));
-            yield return new WaitForSeconds(Random.Range(0, 5));
-            Jump();
-            yield return new WaitForSeconds(Random.Range(0, 5));
-            Move(1, Random.Range(1, 5));
-            yield return new WaitForSeconds(Random.Range(0, 5));
-            Jump();
-            yield return new WaitForSeconds(Random.Range(0, 5));
-        }
+        movementSpeed += amount;
     }
 
     private void Jump()
@@ -192,15 +178,10 @@ public class Boss : Character
         }
     }
 
-    public override void Die()
+    protected override void Die()
     {
         Debug.Log("Character die");
         gameController.KillBoss();
-    }
-
-    public void IncreaseMovementSpeed(int amount)
-    {
-        movementSpeed += amount;
     }
 
     // Drawing of GroundedBox
@@ -208,5 +189,21 @@ public class Boss : Character
     //{
     //    Gizmos.color = Color.red;
     //    Gizmos.DrawCube(transform.position - transform.up * maxDistance, boxSize);
+    //}
+
+    // Randomized fight
+    //public IEnumerator StartRandomFight()
+    //{
+    //    for (int i = 0; i < 100; i++)
+    //    {
+    //        Move(-1, Random.Range(0, 5));
+    //        yield return new WaitForSeconds(Random.Range(0, 5));
+    //        Jump();
+    //        yield return new WaitForSeconds(Random.Range(0, 5));
+    //        Move(1, Random.Range(1, 5));
+    //        yield return new WaitForSeconds(Random.Range(0, 5));
+    //        Jump();
+    //        yield return new WaitForSeconds(Random.Range(0, 5));
+    //    }
     //}
 }

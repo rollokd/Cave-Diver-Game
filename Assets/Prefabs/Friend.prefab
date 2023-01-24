@@ -494,7 +494,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90368140ac3915747bcc80b8c9466438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alive: 1
+  health: 0
+  facingRight: 0
+  healthbar: {fileID: 0}
+  maxHealth: 0
   player: {fileID: 0}
+  animator: {fileID: 2770874558657198582}
+  playerRb: {fileID: 932005017795671519}
 --- !u!95 &2770874558657198582
 Animator:
   serializedVersion: 5

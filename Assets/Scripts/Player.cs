@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,7 +12,7 @@ public class Player : Character
         healthbar.slider.value = health;
     }
 
-    public override void Die()
+    protected override void Die()
     {
         Debug.Log("Character die");
 
@@ -31,18 +29,17 @@ public class Player : Character
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Player hit something");
-        if (collision.gameObject.tag == "Enemy")
+
+        if (collision.gameObject.CompareTag("Enemy"))
             Hit();
 
-        if (collision.gameObject.tag == "Health")
+        if (collision.gameObject.CompareTag("Chest"))
+            gameController.Chest();
+
+        if (collision.gameObject.CompareTag("Health"))
         {
             Heal();
             Destroy(collision.gameObject);
-        }
-
-        if (collision.gameObject.tag == "Chest")
-        {
-            gameController.Chest();
         }
     }
 

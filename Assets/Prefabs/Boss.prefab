@@ -393,11 +393,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf77102e8f68fb4598d403623f175c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: 1
   slider: {fileID: 750290588}
   offset: {x: 0, y: 0.7, z: 0}
   low: {r: 1, g: 0, b: 0, a: 1}
   high: {r: 0, g: 1, b: 0, a: 1}
+  enemy: 1
 --- !u!1 &79380480447552560
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,16 +534,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alive: 1
   health: 20
-  maxHealth: 20
+  facingRight: 0
   healthbar: {fileID: 1659571842}
+  maxHealth: 20
   doubleJump: 0
   jetPack: 0
-  boxSize: {x: 0.5, y: 0.5, z: 1}
-  maxDistance: 1.1
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 8
   movementSpeed: 5
+  rb: {fileID: 6429995217092860514}
+  animator: {fileID: 6350274821780256922}
 --- !u!50 &6429995217092860514
 Rigidbody2D:
   serializedVersion: 4

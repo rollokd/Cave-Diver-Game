@@ -127,6 +127,8 @@ MonoBehaviour:
   rocketExplosion: {fileID: 1424907395483746382, guid: 7c45c8277ae3d4edfa846afd3364fb6a, type: 3}
   rocketSound: {fileID: 8300000, guid: 947719fd38845824ba3638af9d8e4e54, type: 3}
   impactSound: {fileID: 8300000, guid: 1fd31868d68903d4f9e2c4a3b7ef98f3, type: 3}
+  rb: {fileID: 6930678493515587642}
+  sounds: {fileID: 5058514577270601812}
 --- !u!61 &6572901767991538170
 BoxCollider2D:
   m_ObjectHideFlags: 0

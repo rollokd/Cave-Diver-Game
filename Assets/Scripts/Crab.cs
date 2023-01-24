@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Crab : Character
@@ -10,16 +8,14 @@ public class Crab : Character
     private float maxHorizontal;
 
     private float initialHorizontal;
-    private float timer = 0;
+    private float timer;
     private float prevsin;
 
-    // Start is called before the first frame update
     void Start()
     {
         initialHorizontal = transform.position.x;
     }
 
-    // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;

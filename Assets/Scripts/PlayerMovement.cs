@@ -1,46 +1,52 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public bool jetPack = false;
+    [SerializeField]
+    private float movementSpeed;
+
+    [Header("Jumping")]
     public int maxJumps = 0;
+    [SerializeField]
+    private float jumpSpeed;
     
+    [Header("Jetpack")]
+    public bool jetPack = false;
+    [SerializeField]
+    private float fuelCost;
+    [SerializeField]
+    private float fuelRegen;
+
+    [Header("Ground detection cast")]
     [SerializeField]
     private Vector3 boxSize;
     [SerializeField]
     private float maxDistance;
     [SerializeField]
     private LayerMask layerMask;
-    [SerializeField]
-    private float movementSpeed;
-    [SerializeField]
-    private float jumpSpeed;
-    [SerializeField]
-    private float fuelCost;
-    [SerializeField]
-    private float fuelRegen;
 
-    private float maxFuel = 10;
-    private float fuel;
-    private bool isGrounded;
+    [Header("Components")]
+    [SerializeField]
     private Animator animator;
-    private int jumps;
-    private bool canUseJetPack = true;
+    [SerializeField]
     private Rigidbody2D rb;
+    [SerializeField]
     private AudioSource footsteps;
-    private GameController gameController;
+    [SerializeField]
     private Player player;
+
+    private readonly float maxFuel = 10;
+
+    private float fuel;
+    private int jumps;
+    private bool isGrounded;
+    private bool canUseJetPack = true;
+    private GameController gameController;
     
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        footsteps = GetComponent<AudioSource>();
         gameController = FindObjectOfType<GameController>();
-        player = GetComponent<Player>();
         fuel = maxFuel;
     }
 

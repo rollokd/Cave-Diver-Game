@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Octopus : Character
 {
+    [Header("Horizontal")]
     [SerializeField]
     private float horizontalSpeed;
     [SerializeField]
     private float maxHorizontal;
+
+    [Header("Vertical")]
     [SerializeField]
     private float verticalSpeed;
     [SerializeField]
@@ -15,7 +16,7 @@ public class Octopus : Character
 
     private float initialHorizontal;
     private float initialVertical;
-    private float timer = 0;
+    private float timer;
     private float prevsin;
 
     void Start()

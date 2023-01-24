@@ -135,17 +135,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e421b05522c51da41b694199d31b56be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jetPack: 0
+  movementSpeed: 4
   maxJumps: 0
+  jumpSpeed: 9
+  jetPack: 0
+  fuelCost: 100
+  fuelRegen: 10
   boxSize: {x: 0.5, y: 0.5, z: 1}
   maxDistance: 1.1
   layerMask:
     serializedVersion: 2
     m_Bits: 8
-  movementSpeed: 4
-  jumpSpeed: 9
-  fuelCost: 100
-  fuelRegen: 10
+  animator: {fileID: 8583886961185821641}
+  rb: {fileID: 8583886961185821643}
+  footsteps: {fileID: 2186979601832532811}
+  player: {fileID: 8583886961185821646}
 --- !u!50 &8583886961185821643
 Rigidbody2D:
   serializedVersion: 4
@@ -237,8 +241,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alive: 1
   health: 3
-  maxHealth: 3
+  facingRight: 0
   healthbar: {fileID: 0}
+  maxHealth: 3
 --- !u!114 &7784987219539870781
 MonoBehaviour:
   m_ObjectHideFlags: 0

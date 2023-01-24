@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -13,9 +11,12 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     private GameObject rocketPrefab;
 
-    [SerializeField]
     private GameController gameController;
 
+    void Start()
+    {
+        gameController = FindObjectOfType<GameController>();
+    }
     void Update()
     {
         if (gameController != null && gameController.paused)

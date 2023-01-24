@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BossInteractionFade : MonoBehaviour
 {
@@ -9,14 +7,14 @@ public class BossInteractionFade : MonoBehaviour
     private int fades = 10;
     [SerializeField]
     private float fadeSpeed = 1;
-
+    [SerializeField]
     private SpriteRenderer sprite;
+
     private int fadeCounts;
     private GameController gameController;
 
     private void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
         gameController = FindObjectOfType<GameController>();
     }
 
