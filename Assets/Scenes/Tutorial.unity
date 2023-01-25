@@ -878,10 +878,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1656278120}
-  enemy: 0
   offset: {x: 0, y: 0, z: 0}
   low: {r: 1, g: 0, b: 0, a: 1}
   high: {r: 0, g: 1, b: 0, a: 1}
+  enemy: 0
 --- !u!1 &253556840
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,6 +1386,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 956767556}
+    - target: {fileID: 932005017795671515, guid: 76446cf95fbc8a640895233c7f18eac2, type: 3}
+      propertyPath: playerRb
+      value: 
+      objectReference: {fileID: 1065871919}
+    - target: {fileID: 932005017795671515, guid: 76446cf95fbc8a640895233c7f18eac2, type: 3}
+      propertyPath: playerAnimator
+      value: 
+      objectReference: {fileID: 1065871916}
     - target: {fileID: 932005017795671517, guid: 76446cf95fbc8a640895233c7f18eac2, type: 3}
       propertyPath: m_Name
       value: Friend
@@ -8625,6 +8633,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 009cf0975031edc45bb88dedb475eba7, type: 3}
+--- !u!95 &1065871916 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8583886961185821641, guid: 009cf0975031edc45bb88dedb475eba7, type: 3}
+  m_PrefabInstance: {fileID: 1065871915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1065871919 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8583886961185821643, guid: 009cf0975031edc45bb88dedb475eba7, type: 3}
+  m_PrefabInstance: {fileID: 1065871915}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1103476544
 GameObject:
   m_ObjectHideFlags: 0

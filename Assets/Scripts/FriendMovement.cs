@@ -6,9 +6,9 @@ public class FriendMovement : Character
     [SerializeField]
     private PlayerMovement player;
     [SerializeField]
-    private Animator animator;
-    [SerializeField]
     private Rigidbody2D playerRb;
+    [SerializeField]
+    private Animator animator;
 
     void Update()
     {
