@@ -7,7 +7,7 @@ public class Character : MonoBehaviour
     [HideInInspector]
     public int health;
     [HideInInspector]
-    public bool facingRight = false;
+    public bool facingRight;
 
     [SerializeField]
     protected Healthbar healthbar;
